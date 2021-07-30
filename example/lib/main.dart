@@ -101,6 +101,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
               onPressed: () => SwipeImageGallery(
                 context: context,
                 images: remoteImages,
+                initialIndex: 2,
               ).show(),
               child: Text('Open Gallery With URLs'),
             ),
@@ -108,7 +109,6 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
               onPressed: () => SwipeImageGallery(
                 context: context,
                 images: assets,
-                initialIndex: 2,
               ).show(),
               child: Text('Open Gallery With Assets'),
             ),
