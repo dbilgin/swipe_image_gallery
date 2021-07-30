@@ -15,8 +15,6 @@ dependencies:
 
 ### With a List of Image Widgets
 
-![first](https://user-images.githubusercontent.com/15243788/127715435-ee01e5fa-cdcc-4b86-9201-463d353b500a.gif)
-
 ```dart
 final assets = const [
   Image(image: AssetImage('assets/1.jpeg')),
@@ -32,6 +30,8 @@ SwipeImageGallery(
   images: assets,
 ).show();
 ```
+
+![Image Widgets](https://user-images.githubusercontent.com/15243788/127715435-ee01e5fa-cdcc-4b86-9201-463d353b500a.gif)
 
 ### Using Builder
 
@@ -87,6 +87,8 @@ You can find the `OverlayExample` widget [here](https://github.com/dbilgin/swipe
   ).show();
 ```
 
+![overlay](https://user-images.githubusercontent.com/15243788/127715756-6d28ad81-d310-4267-9460-9aa1850a9c6f.gif)
+
 ### Hero Animation
 
 ```dart
@@ -138,5 +140,7 @@ Row(
   ],
 ),
 ```
+
+![hero](https://user-images.githubusercontent.com/15243788/127715901-007e5df4-376b-4a15-b521-f880475296aa.gif)
 
 For more detailed examples you can check out the [example project](https://github.com/dbilgin/swipe_image_gallery/tree/master/example).
