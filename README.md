@@ -1,14 +1,11 @@
-# swipe_image_gallery
+# Swipe Image Gallery
 
-A new Flutter project.
+A scrollable, dismissable by swiping, zoomable, rotatable image gallery on which you can add a dynamic overlay.
 
-## Getting Started
+## Installation
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+First, add `swipe_image_gallery` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+```
+dependencies:
+  swipe_image_gallery: ^0.0.1
+```
