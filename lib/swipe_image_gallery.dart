@@ -7,12 +7,10 @@ import 'package:flutter/services.dart';
 
 import 'util/image_gallery_controller.dart';
 import 'util/image_gallery_hero_parameters.dart';
-import 'util/indexed_image_builder.dart';
 import 'widget/gallery.dart';
 import 'widget/gallery_overlay.dart';
 
 export 'util/image_gallery_hero_parameters.dart';
-export 'util/indexed_image_builder.dart';
 export 'util/image_gallery_controller.dart';
 
 /// A scrollable, dismissable by swiping, zoomable, rotatable image gallery
@@ -107,7 +105,7 @@ class SwipeImageGallery {
   ///   itemCount: urls.length,
   /// ).show()
   /// ```
-  final IndexedImageBuilder? itemBuilder;
+  final IndexedWidgetBuilder? itemBuilder;
 
   /// Count of items to build with the [itemBuilder].
   final int? itemCount;

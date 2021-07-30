@@ -2,29 +2,29 @@ import 'package:flutter/material.dart';
 
 import '../util/image_gallery_hero_parameters.dart';
 
-/// With [InteractiveViewer] and [GestureDetector] this creates an image
+/// With [InteractiveViewer] and [GestureDetector] this creates a
 /// widget that can be zoomed and swiped away.
 /// It also supports double tap for zooming in and out.
-class InteractiveImage extends StatefulWidget {
-  const InteractiveImage({
-    required this.image,
+class InteractivePage extends StatefulWidget {
+  const InteractivePage({
+    required this.child,
     required this.setScrollEnabled,
     required this.dismissDragDistance,
     required this.setBackgroundOpacity,
     this.heroParameters,
   });
 
-  final Image image;
+  final Widget child;
   final void Function(bool) setScrollEnabled;
   final int dismissDragDistance;
   final void Function(double) setBackgroundOpacity;
   final ImageGalleryHeroParameters? heroParameters;
 
   @override
-  _InteractiveImageState createState() => _InteractiveImageState();
+  _InteractivePageState createState() => _InteractivePageState();
 }
 
-class _InteractiveImageState extends State<InteractiveImage>
+class _InteractivePageState extends State<InteractivePage>
     with TickerProviderStateMixin {
   final transformationController = TransformationController();
   late AnimationController _zoomAnimationController;
@@ -166,9 +166,9 @@ class _InteractiveImageState extends State<InteractiveImage>
                             widget.heroParameters!.placeholderBuilder,
                         transitionOnUserGestures:
                             widget.heroParameters!.transitionOnUserGestures,
-                        child: widget.image,
+                        child: widget.child,
                       )
-                    : widget.image,
+                    : widget.child,
               ),
             ),
           ),

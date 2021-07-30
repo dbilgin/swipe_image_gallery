@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../swipe_image_gallery.dart';
-import 'interactive_image.dart';
+import 'interactive_page.dart';
 import '../util/image_gallery_hero_parameters.dart';
 
 /// The [Gallery] widget is responsible of showing the images and enabling
@@ -37,9 +37,9 @@ class Gallery extends StatefulWidget {
   final int initialIndex;
   final int dismissDragDistance;
   final Color backgroundColor;
-  final IndexedImageBuilder? itemBuilder;
+  final IndexedWidgetBuilder? itemBuilder;
   final int? itemCount;
-  final List<Image>? images;
+  final List<Widget>? images;
   final int? transitionDuration;
   final PageController? controller;
   final void Function(int)? onSwipe;
@@ -71,8 +71,8 @@ class _GalleryState extends State<Gallery> {
           controller: controller,
           onPageChanged: widget.onSwipe,
           itemBuilder: (context, index) {
-            return InteractiveImage(
-              image:
+            return InteractivePage(
+              child:
                   widget.images?[index] ?? widget.itemBuilder!(context, index),
               setScrollEnabled: (bool enabled) =>
                   setState(() => _scrollEnabled = enabled),
