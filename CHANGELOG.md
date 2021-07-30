@@ -1,3 +1,8 @@
-## 0.0.1
+## [0.0.1](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.1)
 
-* TODO: Describe initial release.
+* Gallery with widgets
+* Gallery builder
+* Overlay option
+* Hero animation
+* Controllers
+* Swipe to dismiss
