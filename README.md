@@ -15,6 +15,8 @@ dependencies:
 
 ### With a List of Image Widgets
 
+![first](https://user-images.githubusercontent.com/15243788/127715435-ee01e5fa-cdcc-4b86-9201-463d353b500a.gif)
+
 ```dart
 final assets = const [
   Image(image: AssetImage('assets/1.jpeg')),
@@ -31,7 +33,7 @@ SwipeImageGallery(
 ).show();
 ```
 
-### With Builder
+### Using Builder
 
 ```dart
 final urls = [
