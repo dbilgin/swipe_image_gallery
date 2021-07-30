@@ -11,7 +11,7 @@ dependencies:
   swipe_image_gallery: ^0.0.1
 ```
 
-## Usage
+<h1>Usage</h1>
 
 ### With a List of Image Widgets
 
@@ -137,4 +137,4 @@ Row(
 ),
 ```
 
-### For more detailed examples you can check out the [example project](https://github.com/dbilgin/swipe_image_gallery/tree/master/example).
+For more detailed examples you can check out the [example project](https://github.com/dbilgin/swipe_image_gallery/tree/master/example).
