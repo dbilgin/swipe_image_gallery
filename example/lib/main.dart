@@ -54,9 +54,9 @@ class ImageGalleryExamplesPage extends StatefulWidget {
 }
 
 class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
-  final heroParameters = [
-    ImageGalleryHeroParameters(tag: 'imageId1'),
-    ImageGalleryHeroParameters(tag: 'imageId2'),
+  final heroProperties = [
+    ImageGalleryHeroProperties(tag: 'imageId1'),
+    ImageGalleryHeroProperties(tag: 'imageId2'),
   ];
   ImageGalleryController galleryController =
       ImageGalleryController(initialPage: 2);
@@ -139,7 +139,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                     onTap: () => SwipeImageGallery(
                       context: context,
                       images: [assets[0], assets[1]],
-                      heroParameters: heroParameters,
+                      heroProperties: heroProperties,
                     ).show(),
                     child: Hero(
                       tag: 'imageId1',
@@ -155,7 +155,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                       context: context,
                       images: [assets[0], assets[1]],
                       initialIndex: 1,
-                      heroParameters: heroParameters,
+                      heroProperties: heroProperties,
                     ).show(),
                     child: Hero(
                       tag: 'imageId2',

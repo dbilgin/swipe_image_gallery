@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../swipe_image_gallery.dart';
 import 'interactive_page.dart';
-import '../util/image_gallery_hero_parameters.dart';
+import '../util/image_gallery_hero_properties.dart';
 
 /// The [Gallery] widget is responsible of showing the images and enabling
 /// swiping through images using [PageView].
@@ -17,7 +17,7 @@ class Gallery extends StatefulWidget {
     this.transitionDuration,
     this.controller,
     this.onSwipe,
-    this.heroParameters,
+    this.heroProperties,
   })  : assert(
           (images != null &&
                   images.length > 0 &&
@@ -29,9 +29,9 @@ class Gallery extends StatefulWidget {
                   images == null),
         ),
         assert(
-          (heroParameters != null &&
-                  heroParameters.length == (images?.length ?? itemCount)) ||
-              heroParameters == null,
+          (heroProperties != null &&
+                  heroProperties.length == (images?.length ?? itemCount)) ||
+              heroProperties == null,
         );
 
   final int initialIndex;
@@ -43,7 +43,7 @@ class Gallery extends StatefulWidget {
   final int? transitionDuration;
   final PageController? controller;
   final void Function(int)? onSwipe;
-  final List<ImageGalleryHeroParameters>? heroParameters;
+  final List<ImageGalleryHeroProperties>? heroProperties;
 
   @override
   _GalleryState createState() => _GalleryState();
@@ -79,7 +79,7 @@ class _GalleryState extends State<Gallery> {
               setBackgroundOpacity: (double opacity) =>
                   setState(() => _opacity = opacity),
               dismissDragDistance: widget.dismissDragDistance,
-              heroParameters: widget.heroParameters?[index] ?? null,
+              heroProperties: widget.heroProperties?[index] ?? null,
             );
           },
           itemCount: widget.images?.length ?? widget.itemCount,

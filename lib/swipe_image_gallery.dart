@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'util/image_gallery_controller.dart';
-import 'util/image_gallery_hero_parameters.dart';
+import 'util/image_gallery_hero_properties.dart';
 import 'widget/gallery.dart';
 import 'widget/gallery_overlay.dart';
 
-export 'util/image_gallery_hero_parameters.dart';
+export 'util/image_gallery_hero_properties.dart';
 export 'util/image_gallery_controller.dart';
 
 /// A scrollable, dismissable by swiping, zoomable, rotatable image gallery
@@ -84,7 +84,7 @@ class SwipeImageGallery {
     this.onSwipe,
     this.overlayController,
     this.initialOverlay,
-    this.heroParameters,
+    this.heroProperties,
   });
 
   /// [BuildContext] required for triggering the dialogs for the gallery.
@@ -211,9 +211,9 @@ class SwipeImageGallery {
   /// }
 
   /// class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
-  ///   final heroParameters = [
-  ///     ImageGalleryHeroParameters(tag: 'imageId1'),
-  ///     ImageGalleryHeroParameters(tag: 'imageId2'),
+  ///   final heroProperties = [
+  ///     ImageGalleryHeroProperties(tag: 'imageId1'),
+  ///     ImageGalleryHeroProperties(tag: 'imageId2'),
   ///   ];
 
   ///   @override
@@ -231,7 +231,7 @@ class SwipeImageGallery {
   ///                     onTap: () => SwipeImageGallery(
   ///                       context: context,
   ///                       images: [assets[0], assets[1]],
-  ///                       heroParameters: heroParameters,
+  ///                       heroProperties: heroProperties,
   ///                     ).show(),
   ///                     child: Hero(
   ///                       tag: 'imageId1',
@@ -247,7 +247,7 @@ class SwipeImageGallery {
   ///                       context: context,
   ///                       images: [assets[0], assets[1]],
   ///                       initialIndex: 1,
-  ///                       heroParameters: heroParameters,
+  ///                       heroProperties: heroProperties,
   ///                     ).show(),
   ///                     child: Hero(
   ///                       tag: 'imageId2',
@@ -266,7 +266,7 @@ class SwipeImageGallery {
   ///   }
   /// }
   /// ```
-  final List<ImageGalleryHeroParameters>? heroParameters;
+  final List<ImageGalleryHeroProperties>? heroProperties;
 
   /// Shows the image gallery after initialisation.
   void show() async {
@@ -295,7 +295,7 @@ class SwipeImageGallery {
                   transitionDuration: transitionDuration,
                   controller: controller,
                   onSwipe: onSwipe,
-                  heroParameters: heroParameters,
+                  heroProperties: heroProperties,
                 ),
               ),
               if (overlayController != null)
@@ -310,7 +310,7 @@ class SwipeImageGallery {
       },
     );
 
-    if (heroParameters != null) {
+    if (heroProperties != null) {
       await Navigator.of(context).push(
         PageRouteBuilder(
           opaque: false,

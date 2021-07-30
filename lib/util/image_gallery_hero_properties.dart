@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 /// Replicates the properties inside the [Hero] widget and is used for
 /// passing them to the images inside the gallery.
-class ImageGalleryHeroParameters {
-  const ImageGalleryHeroParameters({
+class ImageGalleryHeroProperties {
+  const ImageGalleryHeroProperties({
     Key? key,
     required this.tag,
     this.createRectTween,

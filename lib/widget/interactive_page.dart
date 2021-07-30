@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../util/image_gallery_hero_parameters.dart';
+import '../util/image_gallery_hero_properties.dart';
 
 /// With [InteractiveViewer] and [GestureDetector] this creates a
 /// widget that can be zoomed and swiped away.
@@ -11,14 +11,14 @@ class InteractivePage extends StatefulWidget {
     required this.setScrollEnabled,
     required this.dismissDragDistance,
     required this.setBackgroundOpacity,
-    this.heroParameters,
+    this.heroProperties,
   });
 
   final Widget child;
   final void Function(bool) setScrollEnabled;
   final int dismissDragDistance;
   final void Function(double) setBackgroundOpacity;
-  final ImageGalleryHeroParameters? heroParameters;
+  final ImageGalleryHeroProperties? heroProperties;
 
   @override
   _InteractivePageState createState() => _InteractivePageState();
@@ -156,16 +156,16 @@ class _InteractivePageState extends State<InteractivePage>
               child: InteractiveViewer(
                 maxScale: 8.0,
                 transformationController: transformationController,
-                child: widget.heroParameters != null
+                child: widget.heroProperties != null
                     ? Hero(
-                        tag: widget.heroParameters!.tag,
-                        createRectTween: widget.heroParameters!.createRectTween,
+                        tag: widget.heroProperties!.tag,
+                        createRectTween: widget.heroProperties!.createRectTween,
                         flightShuttleBuilder:
-                            widget.heroParameters!.flightShuttleBuilder,
+                            widget.heroProperties!.flightShuttleBuilder,
                         placeholderBuilder:
-                            widget.heroParameters!.placeholderBuilder,
+                            widget.heroProperties!.placeholderBuilder,
                         transitionOnUserGestures:
-                            widget.heroParameters!.transitionOnUserGestures,
+                            widget.heroProperties!.transitionOnUserGestures,
                         child: widget.child,
                       )
                     : widget.child,
