@@ -5,11 +5,7 @@ While it is intended for an image gallery different types of widgets can also be
 
 ## Installation
 
-First, add `swipe_image_gallery` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
-```
-dependencies:
-  swipe_image_gallery: ^0.0.1
-```
+Add `swipe_image_gallery` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
 <h1>Usage</h1>
 

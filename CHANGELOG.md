@@ -1,3 +1,7 @@
+## [0.0.3](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.3)
+
+* Fixed installation readme
+
 ## [0.0.2](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.2)
 
 * Fixed homepage URL
