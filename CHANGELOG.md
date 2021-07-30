@@ -1,3 +1,7 @@
+## [0.0.2](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.2)
+
+* Fixed homepage URL
+
 ## [0.0.1](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.1)
 
 * Gallery with widgets
