@@ -1,4 +1,5 @@
 # Swipe Image Gallery
+[![Pub Version](https://img.shields.io/pub/v/swipe_image_gallery?color=blueviolet)](https://pub.dev/packages/swipe_image_gallery)
 
 A scrollable, dismissable by swiping, zoomable, rotatable image gallery on which you can add a dynamic overlay.
 While it is intended for an image gallery different types of widgets can also be used.
