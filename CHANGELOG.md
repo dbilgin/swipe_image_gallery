@@ -1,3 +1,7 @@
+## [0.0.4](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.4)
+
+* Fixed documentation for `SwipeImageGallery`
+
 ## [0.0.3](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.3)
 
 * Fixed installation readme

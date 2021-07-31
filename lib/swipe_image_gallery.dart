@@ -13,61 +13,61 @@ import 'widget/gallery_overlay.dart';
 export 'util/image_gallery_hero_properties.dart';
 export 'util/image_gallery_controller.dart';
 
-/// A scrollable, dismissable by swiping, zoomable, rotatable image gallery
-/// on which you can add a dynamic overlay.
-///
-/// [SwipeImageGallery] utilizes [PageView] and [InteractiveViewer] for its
-/// main functionality.
-///
-/// When showing a new gallery you can either use [images] or the
-/// [itemBuilder] and [itemCount] combination to add the images.
-///
-/// Here's an example using the images:
-///
-/// ```dart
-/// final assets = const [
-///   Image(image: AssetImage('assets/1.jpeg')),
-///   Image(image: AssetImage('assets/2.jpeg')),
-///   Image(image: AssetImage('assets/3.jpeg')),
-///   Image(image: AssetImage('assets/4.jpeg')),
-/// ];
-///
-/// ...
-///
-/// ElevatedButton(
-///   onPressed: () => SwipeImageGallery(
-///     context: context,
-///     images: assets,
-///   ).show(),
-///   child: Text('Open Gallery With Assets'),
-/// ),
-/// ```
-///
-/// And another example with [itemBuilder] and [itemCount].
-///
-/// ```dart
-/// final urls = [
-///   'https://via.placeholder.com/400',
-///   'https://via.placeholder.com/800',
-///   'https://via.placeholder.com/900x350',
-///   'https://via.placeholder.com/1000',
-///   'https://via.placeholder.com/100',
-/// ];
-///
-/// ...
-///
-/// ElevatedButton(
-///   onPressed: () => SwipeImageGallery(
-///     context: context,
-///     itemBuilder: (context, index) {
-///       return Image.network(urls[index]);
-///     },
-///     itemCount: urls.length,
-///   ).show(),
-///   child: Text('Open Gallery With Builder'),
-/// ),
-/// ```
 class SwipeImageGallery {
+  /// A scrollable, dismissable by swiping, zoomable, rotatable image gallery
+  /// on which you can add a dynamic overlay.
+  ///
+  /// [SwipeImageGallery] utilizes [PageView] and [InteractiveViewer] for its
+  /// main functionality.
+  ///
+  /// When showing a new gallery you can either use [images] or the
+  /// [itemBuilder] and [itemCount] combination to add the images.
+  ///
+  /// Here's an example using the images:
+  ///
+  /// ```dart
+  /// final assets = const [
+  ///   Image(image: AssetImage('assets/1.jpeg')),
+  ///   Image(image: AssetImage('assets/2.jpeg')),
+  ///   Image(image: AssetImage('assets/3.jpeg')),
+  ///   Image(image: AssetImage('assets/4.jpeg')),
+  /// ];
+  ///
+  /// ...
+  ///
+  /// ElevatedButton(
+  ///   onPressed: () => SwipeImageGallery(
+  ///     context: context,
+  ///     images: assets,
+  ///   ).show(),
+  ///   child: Text('Open Gallery With Assets'),
+  /// ),
+  /// ```
+  ///
+  /// And another example with [itemBuilder] and [itemCount].
+  ///
+  /// ```dart
+  /// final urls = [
+  ///   'https://via.placeholder.com/400',
+  ///   'https://via.placeholder.com/800',
+  ///   'https://via.placeholder.com/900x350',
+  ///   'https://via.placeholder.com/1000',
+  ///   'https://via.placeholder.com/100',
+  /// ];
+  ///
+  /// ...
+  ///
+  /// ElevatedButton(
+  ///   onPressed: () => SwipeImageGallery(
+  ///     context: context,
+  ///     itemBuilder: (context, index) {
+  ///       return Image.network(urls[index]);
+  ///     },
+  ///     itemCount: urls.length,
+  ///   ).show(),
+  ///   child: Text('Open Gallery With Builder'),
+  /// ),
+  /// ```
   SwipeImageGallery({
     required this.context,
     this.images,
