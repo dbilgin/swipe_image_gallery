@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:swipe_image_gallery/widget/gallery_item.dart';
 
 import '../swipe_image_gallery.dart';
-import 'interactive_page.dart';
 import '../util/image_gallery_hero_properties.dart';
+import 'interactive_page.dart';
 
 /// The [Gallery] widget is responsible of showing the images and enabling
 /// swiping through images using [PageView].
@@ -13,24 +14,25 @@ class Gallery extends StatefulWidget {
     required this.backgroundColor,
     this.itemCount,
     this.itemBuilder,
-    this.images,
+    this.galleryItems,
     this.transitionDuration,
     this.controller,
     this.onSwipe,
     this.heroProperties,
   })  : assert(
-          (images != null &&
-                  images.length > 0 &&
+          (galleryItems != null &&
+                  galleryItems.length > 0 &&
                   itemCount == null &&
                   itemBuilder == null) ||
               (itemCount != null &&
                   itemCount > 0 &&
                   itemBuilder != null &&
-                  images == null),
+                  galleryItems == null),
         ),
         assert(
           (heroProperties != null &&
-                  heroProperties.length == (images?.length ?? itemCount)) ||
+                  heroProperties.length ==
+                      (galleryItems?.length ?? itemCount)) ||
               heroProperties == null,
         );
 
@@ -39,7 +41,7 @@ class Gallery extends StatefulWidget {
   final Color backgroundColor;
   final IndexedWidgetBuilder? itemBuilder;
   final int? itemCount;
-  final List<Widget>? images;
+  final List<GalleryItem>? galleryItems;
   final int? transitionDuration;
   final PageController? controller;
   final void Function(int)? onSwipe;
@@ -72,8 +74,8 @@ class _GalleryState extends State<Gallery> {
           onPageChanged: widget.onSwipe,
           itemBuilder: (context, index) {
             return InteractivePage(
-              child:
-                  widget.images?[index] ?? widget.itemBuilder!(context, index),
+              child: widget.galleryItems?[index] ??
+                  GalleryItem(child: widget.itemBuilder!(context, index)),
               setScrollEnabled: (bool enabled) =>
                   setState(() => _scrollEnabled = enabled),
               setBackgroundOpacity: (double opacity) =>
@@ -82,7 +84,7 @@ class _GalleryState extends State<Gallery> {
               heroProperties: widget.heroProperties?[index] ?? null,
             );
           },
-          itemCount: widget.images?.length ?? widget.itemCount,
+          itemCount: widget.galleryItems?.length ?? widget.itemCount,
           physics: _scrollEnabled
               ? BouncingScrollPhysics()
               : NeverScrollableScrollPhysics(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swipe_image_gallery/widget/gallery_item.dart';
 
 import '../util/image_gallery_hero_properties.dart';
 
@@ -14,7 +15,7 @@ class InteractivePage extends StatefulWidget {
     this.heroProperties,
   });
 
-  final Widget child;
+  final GalleryItem child;
   final void Function(bool) setScrollEnabled;
   final int dismissDragDistance;
   final void Function(double) setBackgroundOpacity;
@@ -163,6 +164,17 @@ class _InteractivePageState extends State<InteractivePage>
 
   @override
   Widget build(BuildContext context) {
+    var child = widget.heroProperties != null
+        ? Hero(
+            tag: widget.heroProperties!.tag,
+            createRectTween: widget.heroProperties!.createRectTween,
+            flightShuttleBuilder: widget.heroProperties!.flightShuttleBuilder,
+            placeholderBuilder: widget.heroProperties!.placeholderBuilder,
+            transitionOnUserGestures:
+                widget.heroProperties!.transitionOnUserGestures,
+            child: widget.child.child,
+          )
+        : widget.child.child;
     return Center(
       child: Stack(
         children: [
@@ -172,34 +184,23 @@ class _InteractivePageState extends State<InteractivePage>
             bottom: -_dragPosition.dy,
             right: -_dragPosition.dx,
             child: GestureDetector(
-              onVerticalDragStart: _zoomed
-                  ? null
-                  : (_) {
-                      _translateToCenterController.reset();
-                    },
-              onVerticalDragUpdate:
-                  !_zoomed ? onVerticalDragUpdateHandler : null,
-              onVerticalDragEnd: !_zoomed ? onVerticalDragEndHandler : null,
-              onDoubleTapDown: doubleTapDownHandler,
-              onDoubleTap: onDoubleTap,
-              child: InteractiveViewer(
-                maxScale: 8.0,
-                transformationController: transformationController,
-                child: widget.heroProperties != null
-                    ? Hero(
-                        tag: widget.heroProperties!.tag,
-                        createRectTween: widget.heroProperties!.createRectTween,
-                        flightShuttleBuilder:
-                            widget.heroProperties!.flightShuttleBuilder,
-                        placeholderBuilder:
-                            widget.heroProperties!.placeholderBuilder,
-                        transitionOnUserGestures:
-                            widget.heroProperties!.transitionOnUserGestures,
-                        child: widget.child,
+                onVerticalDragStart: _zoomed
+                    ? null
+                    : (_) {
+                        _translateToCenterController.reset();
+                      },
+                onVerticalDragUpdate:
+                    !_zoomed ? onVerticalDragUpdateHandler : null,
+                onVerticalDragEnd: !_zoomed ? onVerticalDragEndHandler : null,
+                onDoubleTapDown: doubleTapDownHandler,
+                onDoubleTap: onDoubleTap,
+                child: widget.child.isInteractive
+                    ? InteractiveViewer(
+                        maxScale: 8.0,
+                        transformationController: transformationController,
+                        child: child,
                       )
-                    : widget.child,
-              ),
-            ),
+                    : child),
           ),
         ],
       ),

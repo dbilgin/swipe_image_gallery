@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:example/overlay_example.dart';
 import 'package:flutter/material.dart';
 import 'package:swipe_image_gallery/swipe_image_gallery.dart';
+import 'package:swipe_image_gallery/widget/gallery_item.dart';
 
 void main() {
   runApp(ImageGalleryExampleApp());
@@ -35,13 +36,14 @@ final remoteImages = [
   Image.network('https://via.placeholder.com/900x350'),
   Image.network('https://via.placeholder.com/1000'),
   Image.network('https://via.placeholder.com/100'),
-];
+].map((i) => GalleryItem(child: i)).toList();
 
-final assets = const [
-  Image(image: AssetImage('assets/1.jpeg')),
-  Image(image: AssetImage('assets/2.jpeg')),
-  Image(image: AssetImage('assets/3.jpeg')),
-  Image(image: AssetImage('assets/4.jpeg')),
+final assets = [
+  GalleryItem(
+      child: Image(image: AssetImage('assets/1.jpeg')), isInteractive: false),
+  GalleryItem(
+      child: Image(image: AssetImage('assets/2.jpeg')), isInteractive: true),
+  GalleryItem(child: Image(image: AssetImage('assets/3.jpeg'))),
 ];
 
 class ImageGalleryExamplesPage extends StatefulWidget {

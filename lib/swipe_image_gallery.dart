@@ -4,14 +4,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:swipe_image_gallery/widget/gallery_item.dart';
 
 import 'util/image_gallery_controller.dart';
 import 'util/image_gallery_hero_properties.dart';
 import 'widget/gallery.dart';
 import 'widget/gallery_overlay.dart';
 
-export 'util/image_gallery_hero_properties.dart';
 export 'util/image_gallery_controller.dart';
+export 'util/image_gallery_hero_properties.dart';
 
 class SwipeImageGallery {
   /// A scrollable, dismissable by swiping, zoomable, rotatable image gallery
@@ -90,9 +91,9 @@ class SwipeImageGallery {
   /// [BuildContext] required for triggering the dialogs for the gallery.
   final BuildContext context;
 
-  /// A list of image widgets to display in the gallery if [itemBuilder]
+  /// A list of GaleryItems widgets to display in the gallery if [itemBuilder]
   /// is not used.
-  final List<Image>? images;
+  final List<GalleryItem>? images;
 
   /// Works together with [itemCount] for building items in one method.
   /// A simple usage with a list of urls would be as below:
@@ -286,7 +287,7 @@ class SwipeImageGallery {
                   }
                 },
                 child: Gallery(
-                  images: images,
+                  galleryItems: images,
                   itemBuilder: itemBuilder,
                   itemCount: itemCount,
                   initialIndex: initialIndex,
@@ -331,6 +332,6 @@ class SwipeImageGallery {
     }
 
     if (hideStatusBar)
-      await SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+      await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   }
 }
