@@ -5,6 +5,8 @@ import '../swipe_image_gallery.dart';
 import '../util/image_gallery_hero_properties.dart';
 import 'interactive_page.dart';
 
+typedef GalleryItemBuilder = GalleryItem Function(BuildContext context, int i);
+
 /// The [Gallery] widget is responsible of showing the images and enabling
 /// swiping through images using [PageView].
 class Gallery extends StatefulWidget {
@@ -39,7 +41,7 @@ class Gallery extends StatefulWidget {
   final int initialIndex;
   final int dismissDragDistance;
   final Color backgroundColor;
-  final IndexedWidgetBuilder? itemBuilder;
+  final GalleryItemBuilder? itemBuilder;
   final int? itemCount;
   final List<GalleryItem>? galleryItems;
   final int? transitionDuration;
@@ -75,7 +77,7 @@ class _GalleryState extends State<Gallery> {
           itemBuilder: (context, index) {
             return InteractivePage(
               child: widget.galleryItems?[index] ??
-                  GalleryItem(child: widget.itemBuilder!(context, index)),
+                  widget.itemBuilder!(context, index),
               setScrollEnabled: (bool enabled) =>
                   setState(() => _scrollEnabled = enabled),
               setBackgroundOpacity: (double opacity) =>

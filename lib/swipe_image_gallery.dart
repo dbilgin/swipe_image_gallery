@@ -106,7 +106,7 @@ class SwipeImageGallery {
   ///   itemCount: urls.length,
   /// ).show()
   /// ```
-  final IndexedWidgetBuilder? itemBuilder;
+  final GalleryItemBuilder? itemBuilder;
 
   /// Count of items to build with the [itemBuilder].
   final int? itemCount;

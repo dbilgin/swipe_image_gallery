@@ -125,9 +125,8 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
             ElevatedButton(
               onPressed: () => SwipeImageGallery(
                 context: context,
-                itemBuilder: (context, index) {
-                  return Image.network(urls[index]);
-                },
+                itemBuilder: (context, index) =>
+                    GalleryItem(child: Image.network(urls[index])),
                 itemCount: urls.length,
                 onSwipe: (index) => print(index),
               ).show(),
