@@ -83,7 +83,7 @@ class _InteractivePageState extends State<InteractivePage>
         _dragPosition = Offset(0, _offsetTween.value);
       });
       if (_translateToCenterController.isCompleted) {
-        _translateToCenterController.removeListener(animationListener);
+        _offsetTween.removeListener(animationListener);
       }
     }
 
