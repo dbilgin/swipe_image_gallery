@@ -28,6 +28,7 @@ class _InteractivePageState extends State<InteractivePage>
     with TickerProviderStateMixin {
   final transformationController = TransformationController();
   late AnimationController _zoomAnimationController;
+  late AnimationController _translateToCenterController;
   late AnimationController _zoomOutAnimationController;
 
   bool _zoomed = false;
@@ -58,13 +59,36 @@ class _InteractivePageState extends State<InteractivePage>
       vsync: this,
       duration: const Duration(milliseconds: 200),
     );
+    _translateToCenterController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 200),
+    );
     super.initState();
   }
 
   @override
   void dispose() {
     transformationController.removeListener(transformListener);
+    _zoomAnimationController.dispose();
+    _zoomOutAnimationController.dispose();
+    _translateToCenterController.dispose();
     super.dispose();
+  }
+
+  void animateDragPosition(double offsetY) {
+    final _offsetTween = Tween<double>(begin: offsetY, end: 0)
+        .animate(_translateToCenterController);
+    void animationListener() {
+      setState(() {
+        _dragPosition = Offset(0, _offsetTween.value);
+      });
+      if (_translateToCenterController.isCompleted) {
+        _offsetTween.removeListener(animationListener);
+      }
+    }
+
+    _offsetTween.addListener(animationListener);
+    _translateToCenterController.forward();
   }
 
   void animateZoom({
@@ -124,8 +148,8 @@ class _InteractivePageState extends State<InteractivePage>
     if (pixelsPerSecond > (widget.dismissDragDistance)) {
       Navigator.pop(context);
     } else {
-      setState(() => _dragPosition = Offset(0.0, 0.0));
       widget.setBackgroundOpacity(1.0);
+      animateDragPosition(_dragPosition.dy);
     }
   }
 
@@ -148,6 +172,11 @@ class _InteractivePageState extends State<InteractivePage>
             bottom: -_dragPosition.dy,
             right: -_dragPosition.dx,
             child: GestureDetector(
+              onVerticalDragStart: _zoomed
+                  ? null
+                  : (_) {
+                      _translateToCenterController.reset();
+                    },
               onVerticalDragUpdate:
                   !_zoomed ? onVerticalDragUpdateHandler : null,
               onVerticalDragEnd: !_zoomed ? onVerticalDragEndHandler : null,
