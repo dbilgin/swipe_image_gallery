@@ -26,7 +26,7 @@ class InteractivePage extends StatefulWidget {
 
 class _InteractivePageState extends State<InteractivePage>
     with TickerProviderStateMixin {
-  final transformationController = TransformationController();
+  final _transformationController = TransformationController();
   late AnimationController _zoomAnimationController;
   late AnimationController _translateToCenterController;
   late AnimationController _zoomOutAnimationController;
@@ -35,7 +35,7 @@ class _InteractivePageState extends State<InteractivePage>
   Offset _dragPosition = Offset(0.0, 0.0);
 
   void transformListener() {
-    final scale = transformationController.value.row0.r;
+    final scale = _transformationController.value.row0.r;
 
     if (scale > 1 && !_zoomed) {
       setState(() => _zoomed = true);
@@ -50,7 +50,7 @@ class _InteractivePageState extends State<InteractivePage>
 
   @override
   void initState() {
-    transformationController.addListener(transformListener);
+    _transformationController.addListener(transformListener);
     _zoomAnimationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 200),
@@ -68,7 +68,7 @@ class _InteractivePageState extends State<InteractivePage>
 
   @override
   void dispose() {
-    transformationController.removeListener(transformListener);
+    _transformationController.dispose();
     _zoomAnimationController.dispose();
     _zoomOutAnimationController.dispose();
     _translateToCenterController.dispose();
@@ -96,14 +96,14 @@ class _InteractivePageState extends State<InteractivePage>
     required AnimationController animationController,
   }) {
     final _mapAnimation = Matrix4Tween(
-      begin: transformationController.value,
+      begin: _transformationController.value,
       end: end,
     ).animate(animationController);
 
     void animationListener() {
-      transformationController.value = _mapAnimation.value;
+      _transformationController.value = _mapAnimation.value;
 
-      if (transformationController.value == end) {
+      if (_transformationController.value == end) {
         _mapAnimation.removeListener(animationListener);
       }
     }
@@ -184,7 +184,7 @@ class _InteractivePageState extends State<InteractivePage>
               onDoubleTap: onDoubleTap,
               child: InteractiveViewer(
                 maxScale: 8.0,
-                transformationController: transformationController,
+                transformationController: _transformationController,
                 child: widget.heroProperties != null
                     ? Hero(
                         tag: widget.heroProperties!.tag,

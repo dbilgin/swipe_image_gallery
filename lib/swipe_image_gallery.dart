@@ -112,7 +112,7 @@ class SwipeImageGallery {
 
   /// Hides the status bar when the gallery opens and shows it again when
   /// it's dismissed if set to true using
-  /// [SystemChrome.setEnabledSystemUIOverlays].
+  /// [SystemChrome.setEnabledSystemUIMode].
   final bool hideStatusBar;
 
   /// Sets the initial index of the gallery when it's first opening.
@@ -270,7 +270,8 @@ class SwipeImageGallery {
 
   /// Shows the image gallery after initialisation.
   void show() async {
-    if (hideStatusBar) SystemChrome.setEnabledSystemUIOverlays([]);
+    if (hideStatusBar)
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     var showOverlay = true;
 
     final content = StatefulBuilder(
@@ -331,6 +332,7 @@ class SwipeImageGallery {
     }
 
     if (hideStatusBar)
-      await SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
+      await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+          overlays: SystemUiOverlay.values);
   }
 }
