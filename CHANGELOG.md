@@ -1,6 +1,8 @@
-## [0.0.4](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.4)
+## [0.0.5](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.5)
 
-* Fixed documentation for `SwipeImageGallery`
+* Added animation for when threshold was not reached during dismiss thanks to @garlicPasta
+* Refactored interactive_page.dart
+* Got rid of deprecated setEnabledSystemUIOverlays
 
 ## [0.0.4](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.4)
 
