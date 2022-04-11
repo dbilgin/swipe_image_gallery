@@ -1,3 +1,7 @@
+## [0.5.1](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.5.1)
+
+* Updated readme
+
 ## [0.5.0](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.5.0)
 
 * Made code styling fixes
