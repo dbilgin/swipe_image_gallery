@@ -191,10 +191,8 @@ class _InteractivePageState extends State<InteractivePage>
                     ? Hero(
                         tag: heroProps.tag,
                         createRectTween: heroProps.createRectTween,
-                        flightShuttleBuilder:
-                            heroProps.flightShuttleBuilder,
-                        placeholderBuilder:
-                            heroProps.placeholderBuilder,
+                        flightShuttleBuilder: heroProps.flightShuttleBuilder,
+                        placeholderBuilder: heroProps.placeholderBuilder,
                         transitionOnUserGestures:
                             heroProps.transitionOnUserGestures,
                         child: widget.child,
