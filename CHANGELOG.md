@@ -1,3 +1,8 @@
+## [0.5.0](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.5.0)
+
+* Made code styling fixes
+* Enabled using widgets and not just images
+
 ## [0.0.5](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.5)
 
 * Added animation for when threshold was not reached during dismiss thanks to @garlicPasta
