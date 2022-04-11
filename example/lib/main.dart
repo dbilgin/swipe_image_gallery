@@ -44,6 +44,21 @@ final assets = const [
   Image(image: AssetImage('assets/4.jpeg')),
 ];
 
+final widgets = [
+  Container(
+    color: Colors.white,
+    child: Center(
+      child: Text('First Page', style: TextStyle(fontSize: 24.0)),
+    ),
+  ),
+  Container(
+    color: Colors.grey,
+    child: Center(
+      child: Text('Second Page', style: TextStyle(fontSize: 24.0)),
+    ),
+  ),
+];
+
 class ImageGalleryExamplesPage extends StatefulWidget {
   ImageGalleryExamplesPage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -83,7 +98,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
               onPressed: () {
                 SwipeImageGallery(
                   context: context,
-                  images: remoteImages,
+                  children: remoteImages,
                   onSwipe: (index) {
                     overlayController.add(OverlayExample(
                       title: '${index + 1}/${remoteImages.length}',
@@ -100,7 +115,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
             ElevatedButton(
               onPressed: () => SwipeImageGallery(
                 context: context,
-                images: remoteImages,
+                children: remoteImages,
                 initialIndex: 2,
               ).show(),
               child: Text('Open Gallery With URLs'),
@@ -108,14 +123,21 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
             ElevatedButton(
               onPressed: () => SwipeImageGallery(
                 context: context,
-                images: assets,
+                children: widgets,
+              ).show(),
+              child: Text('Open Gallery With Widgets'),
+            ),
+            ElevatedButton(
+              onPressed: () => SwipeImageGallery(
+                context: context,
+                children: assets,
               ).show(),
               child: Text('Open Gallery With Assets'),
             ),
             ElevatedButton(
               onPressed: () => SwipeImageGallery(
                 context: context,
-                images: assets,
+                children: assets,
                 controller: galleryController,
               ).show(),
               child: Text('Open Gallery With Controller'),
@@ -138,7 +160,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                   child: InkWell(
                     onTap: () => SwipeImageGallery(
                       context: context,
-                      images: [assets[0], assets[1]],
+                      children: [assets[0], assets[1]],
                       heroProperties: heroProperties,
                     ).show(),
                     child: Hero(
@@ -153,7 +175,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                   child: InkWell(
                     onTap: () => SwipeImageGallery(
                       context: context,
-                      images: [assets[0], assets[1]],
+                      children: [assets[0], assets[1]],
                       initialIndex: 1,
                       heroProperties: heroProperties,
                     ).show(),

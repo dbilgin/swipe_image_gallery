@@ -163,6 +163,8 @@ class _InteractivePageState extends State<InteractivePage>
 
   @override
   Widget build(BuildContext context) {
+    final heroProps = widget.heroProperties;
+
     return Center(
       child: Stack(
         children: [
@@ -185,16 +187,16 @@ class _InteractivePageState extends State<InteractivePage>
               child: InteractiveViewer(
                 maxScale: 8.0,
                 transformationController: _transformationController,
-                child: widget.heroProperties != null
+                child: heroProps != null
                     ? Hero(
-                        tag: widget.heroProperties!.tag,
-                        createRectTween: widget.heroProperties!.createRectTween,
+                        tag: heroProps.tag,
+                        createRectTween: heroProps.createRectTween,
                         flightShuttleBuilder:
-                            widget.heroProperties!.flightShuttleBuilder,
+                            heroProps.flightShuttleBuilder,
                         placeholderBuilder:
-                            widget.heroProperties!.placeholderBuilder,
+                            heroProps.placeholderBuilder,
                         transitionOnUserGestures:
-                            widget.heroProperties!.transitionOnUserGestures,
+                            heroProps.transitionOnUserGestures,
                         child: widget.child,
                       )
                     : widget.child,

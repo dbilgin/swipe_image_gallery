@@ -24,11 +24,37 @@ final assets = const [
 
 SwipeImageGallery(
   context: context,
-  images: assets,
+  children: assets,
 ).show();
 ```
 
 ![Image Widgets](https://user-images.githubusercontent.com/15243788/127715435-ee01e5fa-cdcc-4b86-9201-463d353b500a.gif)
+
+### With a List of Widgets
+
+```dart
+final widgets = [
+  Container(
+    color: Colors.white,
+    child: Center(
+      child: Text('First Page', style: TextStyle(fontSize: 24.0)),
+    ),
+  ),
+  Container(
+    color: Colors.grey,
+    child: Center(
+      child: Text('Second Page', style: TextStyle(fontSize: 24.0)),
+    ),
+  ),
+];
+
+...
+
+SwipeImageGallery(
+  context: context,
+  children: widgets,
+).show();
+```
 
 ### Using Builder
 
@@ -71,7 +97,7 @@ You can find the `OverlayExample` widget [here](https://github.com/dbilgin/swipe
 
   SwipeImageGallery(
     context: context,
-    images: remoteImages,
+    children: remoteImages,
     onSwipe: (index) {
       overlayController.add(OverlayExample(
         title: '${index + 1}/${remoteImages.length}',
@@ -107,7 +133,7 @@ Row(
       child: InkWell(
         onTap: () => SwipeImageGallery(
           context: context,
-          images: assets,
+          children: assets,
           heroProperties: heroProperties,
         ).show(),
         child: Hero(
@@ -122,7 +148,7 @@ Row(
       child: InkWell(
         onTap: () => SwipeImageGallery(
           context: context,
-          images: assets,
+          children: assets,
           initialIndex: 1,
           heroProperties: heroProperties,
         ).show(),

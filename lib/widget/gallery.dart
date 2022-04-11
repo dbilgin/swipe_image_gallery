@@ -13,24 +13,24 @@ class Gallery extends StatefulWidget {
     required this.backgroundColor,
     this.itemCount,
     this.itemBuilder,
-    this.images,
+    this.children,
     this.transitionDuration,
     this.controller,
     this.onSwipe,
     this.heroProperties,
   })  : assert(
-          (images != null &&
-                  images.length > 0 &&
+          (children != null &&
+                  children.length > 0 &&
                   itemCount == null &&
                   itemBuilder == null) ||
               (itemCount != null &&
                   itemCount > 0 &&
                   itemBuilder != null &&
-                  images == null),
+                  children == null),
         ),
         assert(
           (heroProperties != null &&
-                  heroProperties.length == (images?.length ?? itemCount)) ||
+                  heroProperties.length == (children?.length ?? itemCount)) ||
               heroProperties == null,
         );
 
@@ -39,7 +39,7 @@ class Gallery extends StatefulWidget {
   final Color backgroundColor;
   final IndexedWidgetBuilder? itemBuilder;
   final int? itemCount;
-  final List<Widget>? images;
+  final List<Widget>? children;
   final int? transitionDuration;
   final PageController? controller;
   final void Function(int)? onSwipe;
@@ -72,8 +72,8 @@ class _GalleryState extends State<Gallery> {
           onPageChanged: widget.onSwipe,
           itemBuilder: (context, index) {
             return InteractivePage(
-              child:
-                  widget.images?[index] ?? widget.itemBuilder!(context, index),
+              child: widget.children?[index] ??
+                  widget.itemBuilder!(context, index),
               setScrollEnabled: (bool enabled) =>
                   setState(() => _scrollEnabled = enabled),
               setBackgroundOpacity: (double opacity) =>
@@ -82,7 +82,7 @@ class _GalleryState extends State<Gallery> {
               heroProperties: widget.heroProperties?[index] ?? null,
             );
           },
-          itemCount: widget.images?.length ?? widget.itemCount,
+          itemCount: widget.children?.length ?? widget.itemCount,
           physics: _scrollEnabled
               ? BouncingScrollPhysics()
               : NeverScrollableScrollPhysics(),

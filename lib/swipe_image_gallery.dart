@@ -38,7 +38,7 @@ class SwipeImageGallery {
   /// ElevatedButton(
   ///   onPressed: () => SwipeImageGallery(
   ///     context: context,
-  ///     images: assets,
+  ///     children: assets,
   ///   ).show(),
   ///   child: Text('Open Gallery With Assets'),
   /// ),
@@ -70,7 +70,7 @@ class SwipeImageGallery {
   /// ```
   SwipeImageGallery({
     required this.context,
-    this.images,
+    this.children,
     this.itemBuilder,
     this.itemCount,
     this.hideStatusBar = true,
@@ -90,9 +90,9 @@ class SwipeImageGallery {
   /// [BuildContext] required for triggering the dialogs for the gallery.
   final BuildContext context;
 
-  /// A list of image widgets to display in the gallery if [itemBuilder]
+  /// A list of widgets to display in the gallery if [itemBuilder]
   /// is not used.
-  final List<Image>? images;
+  final List<Widget>? children;
 
   /// Works together with [itemCount] for building items in one method.
   /// A simple usage with a list of urls would be as below:
@@ -168,7 +168,7 @@ class SwipeImageGallery {
   ///   onPressed: () {
   ///     SwipeImageGallery(
   ///       context: context,
-  ///       images: remoteImages,
+  ///       children: remoteImages,
   ///       onSwipe: (index) {
   ///         overlayController.add(OverlayExample(
   ///           title: '${index + 1}/${remoteImages.length}',
@@ -230,7 +230,7 @@ class SwipeImageGallery {
   ///                   child: InkWell(
   ///                     onTap: () => SwipeImageGallery(
   ///                       context: context,
-  ///                       images: [assets[0], assets[1]],
+  ///                       children: [assets[0], assets[1]],
   ///                       heroProperties: heroProperties,
   ///                     ).show(),
   ///                     child: Hero(
@@ -245,7 +245,7 @@ class SwipeImageGallery {
   ///                   child: InkWell(
   ///                     onTap: () => SwipeImageGallery(
   ///                       context: context,
-  ///                       images: [assets[0], assets[1]],
+  ///                       children: [assets[0], assets[1]],
   ///                       initialIndex: 1,
   ///                       heroProperties: heroProperties,
   ///                     ).show(),
@@ -287,7 +287,7 @@ class SwipeImageGallery {
                   }
                 },
                 child: Gallery(
-                  images: images,
+                  children: children,
                   itemBuilder: itemBuilder,
                   itemCount: itemCount,
                   initialIndex: initialIndex,
