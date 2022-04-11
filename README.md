@@ -56,6 +56,8 @@ SwipeImageGallery(
 ).show();
 ```
 
+![widgets](https://user-images.githubusercontent.com/15243788/162843736-0be8621b-63f1-4144-8aa8-a804f89f24a0.gif)
+
 ### Using Builder
 
 ```dart
