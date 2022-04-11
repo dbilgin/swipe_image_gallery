@@ -2,6 +2,7 @@
 
 * Made code styling fixes
 * Enabled using widgets and not just images
+* Changed `images` property to `children`
 
 ## [0.0.5](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.0.5)
 
