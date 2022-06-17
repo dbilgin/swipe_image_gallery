@@ -273,9 +273,16 @@ class SwipeImageGallery {
     if (hideStatusBar)
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     var showOverlay = true;
+    double _opacity = 1.0;
 
     final content = StatefulBuilder(
       builder: (context, setState) {
+        void _setOpacity(double opacity) {
+          setState(() {
+            _opacity = opacity;
+          });
+        }
+
         return Material(
           color: Colors.transparent,
           child: Stack(
@@ -297,12 +304,15 @@ class SwipeImageGallery {
                   controller: controller,
                   onSwipe: onSwipe,
                   heroProperties: heroProperties,
+                  opacity: _opacity,
+                  setBackgroundOpacity: _setOpacity,
                 ),
               ),
               if (overlayController != null)
                 GalleryOverlay(
                   overlayController: overlayController!,
                   showOverlay: showOverlay,
+                  opacity: _opacity,
                   initialData: initialOverlay,
                 ),
             ],

@@ -13,16 +13,18 @@ class GalleryOverlay extends StatelessWidget {
   const GalleryOverlay({
     required this.overlayController,
     required this.showOverlay,
+    required this.opacity,
     this.initialData,
   });
   final StreamController<Widget> overlayController;
-  final Widget? initialData;
   final bool showOverlay;
+  final double opacity;
+  final Widget? initialData;
 
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      opacity: showOverlay ? 1.0 : 0.0,
+      opacity: showOverlay ? opacity : 0.0,
       duration: const Duration(milliseconds: 200),
       child: StreamBuilder(
         initialData: initialData,

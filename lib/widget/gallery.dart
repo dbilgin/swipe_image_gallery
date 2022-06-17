@@ -11,6 +11,8 @@ class Gallery extends StatefulWidget {
     required this.initialIndex,
     required this.dismissDragDistance,
     required this.backgroundColor,
+    required this.opacity,
+    required this.setBackgroundOpacity,
     this.itemCount,
     this.itemBuilder,
     this.children,
@@ -37,6 +39,8 @@ class Gallery extends StatefulWidget {
   final int initialIndex;
   final int dismissDragDistance;
   final Color backgroundColor;
+  final double opacity;
+  final void Function(double) setBackgroundOpacity;
   final IndexedWidgetBuilder? itemBuilder;
   final int? itemCount;
   final List<Widget>? children;
@@ -51,7 +55,6 @@ class Gallery extends StatefulWidget {
 
 class _GalleryState extends State<Gallery> {
   bool _scrollEnabled = true;
-  double _opacity = 1.0;
 
   late PageController controller;
 
@@ -65,7 +68,7 @@ class _GalleryState extends State<Gallery> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: widget.backgroundColor.withOpacity(_opacity),
+      color: widget.backgroundColor.withOpacity(widget.opacity),
       child: SafeArea(
         child: PageView.builder(
           controller: controller,
@@ -76,8 +79,7 @@ class _GalleryState extends State<Gallery> {
                   widget.itemBuilder!(context, index),
               setScrollEnabled: (bool enabled) =>
                   setState(() => _scrollEnabled = enabled),
-              setBackgroundOpacity: (double opacity) =>
-                  setState(() => _opacity = opacity),
+              setBackgroundOpacity: widget.setBackgroundOpacity,
               dismissDragDistance: widget.dismissDragDistance,
               heroProperties: widget.heroProperties?[index] ?? null,
             );
