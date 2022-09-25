@@ -153,6 +153,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                   return Image.network(urls[index]);
                 },
                 itemCount: urls.length,
+                // ignore: avoid_print
                 onSwipe: (index) => print(index),
               ).show(),
               child: const Text('Open Gallery With Builder'),
