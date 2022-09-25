@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:swipe_image_gallery/util/custom_keyboard_listener.dart';
 
 import '../swipe_image_gallery.dart';
+import '../util/custom_scroll_behavior.dart';
 import 'interactive_page.dart';
 import '../util/image_gallery_hero_properties.dart';
 
@@ -70,24 +72,28 @@ class _GalleryState extends State<Gallery> {
     return Container(
       color: widget.backgroundColor.withOpacity(widget.opacity),
       child: SafeArea(
-        child: PageView.builder(
+        child: CustomKeyboardListener(
           controller: controller,
-          onPageChanged: widget.onSwipe,
-          itemBuilder: (context, index) {
-            return InteractivePage(
-              child: widget.children?[index] ??
-                  widget.itemBuilder!(context, index),
-              setScrollEnabled: (bool enabled) =>
-                  setState(() => _scrollEnabled = enabled),
-              setBackgroundOpacity: widget.setBackgroundOpacity,
-              dismissDragDistance: widget.dismissDragDistance,
-              heroProperties: widget.heroProperties?[index] ?? null,
-            );
-          },
-          itemCount: widget.children?.length ?? widget.itemCount,
-          physics: _scrollEnabled
-              ? BouncingScrollPhysics()
-              : NeverScrollableScrollPhysics(),
+          child: PageView.builder(
+            controller: controller,
+            onPageChanged: widget.onSwipe,
+            itemBuilder: (context, index) {
+              return InteractivePage(
+                child: widget.children?[index] ??
+                    widget.itemBuilder!(context, index),
+                setScrollEnabled: (bool enabled) =>
+                    setState(() => _scrollEnabled = enabled),
+                setBackgroundOpacity: widget.setBackgroundOpacity,
+                dismissDragDistance: widget.dismissDragDistance,
+                heroProperties: widget.heroProperties?[index] ?? null,
+              );
+            },
+            itemCount: widget.children?.length ?? widget.itemCount,
+            physics: _scrollEnabled
+                ? BouncingScrollPhysics()
+                : NeverScrollableScrollPhysics(),
+            scrollBehavior: CustomScrollBehavior(),
+          ),
         ),
       ),
     );
