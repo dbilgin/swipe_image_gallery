@@ -1,3 +1,8 @@
+## [0.8.0](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.0)
+
+- Added proper desktop and web support
+- Fixed the example project up and added desktop examples for windows and linux
+
 ## [0.5.2](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.5.2)
 
 - Added opacity change to overlay
