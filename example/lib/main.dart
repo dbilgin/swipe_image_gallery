@@ -5,10 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:swipe_image_gallery/swipe_image_gallery.dart';
 
 void main() {
-  runApp(ImageGalleryExampleApp());
+  runApp(const ImageGalleryExampleApp());
 }
 
 class ImageGalleryExampleApp extends StatelessWidget {
+  const ImageGalleryExampleApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +18,8 @@ class ImageGalleryExampleApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ImageGalleryExamplesPage(title: 'Image Gallery Demo Home Page'),
+      home:
+          const ImageGalleryExamplesPage(title: 'Image Gallery Demo Home Page'),
     );
   }
 }
@@ -37,7 +40,7 @@ final remoteImages = [
   Image.network('https://via.placeholder.com/100'),
 ];
 
-final assets = const [
+const assets = [
   Image(image: AssetImage('assets/1.jpeg')),
   Image(image: AssetImage('assets/2.jpeg')),
   Image(image: AssetImage('assets/3.jpeg')),
@@ -47,31 +50,32 @@ final assets = const [
 final widgets = [
   Container(
     color: Colors.white,
-    child: Center(
+    child: const Center(
       child: Text('First Page', style: TextStyle(fontSize: 24.0)),
     ),
   ),
   Container(
     color: Colors.grey,
-    child: Center(
+    child: const Center(
       child: Text('Second Page', style: TextStyle(fontSize: 24.0)),
     ),
   ),
 ];
 
 class ImageGalleryExamplesPage extends StatefulWidget {
-  ImageGalleryExamplesPage({Key? key, required this.title}) : super(key: key);
+  const ImageGalleryExamplesPage({Key? key, required this.title})
+      : super(key: key);
   final String title;
 
   @override
-  _ImageGalleryExamplesPageState createState() =>
+  State<ImageGalleryExamplesPage> createState() =>
       _ImageGalleryExamplesPageState();
 }
 
 class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
   final heroProperties = [
-    ImageGalleryHeroProperties(tag: 'imageId1'),
-    ImageGalleryHeroProperties(tag: 'imageId2'),
+    const ImageGalleryHeroProperties(tag: 'imageId1'),
+    const ImageGalleryHeroProperties(tag: 'imageId2'),
   ];
   ImageGalleryController galleryController =
       ImageGalleryController(initialPage: 2);
@@ -91,7 +95,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
         title: Text(widget.title),
       ),
       body: Container(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
             ElevatedButton(
@@ -110,7 +114,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                   ),
                 ).show();
               },
-              child: Text('Open Gallery With Overlay'),
+              child: const Text('Open Gallery With Overlay'),
             ),
             ElevatedButton(
               onPressed: () => SwipeImageGallery(
@@ -118,21 +122,21 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                 children: remoteImages,
                 initialIndex: 2,
               ).show(),
-              child: Text('Open Gallery With URLs'),
+              child: const Text('Open Gallery With URLs'),
             ),
             ElevatedButton(
               onPressed: () => SwipeImageGallery(
                 context: context,
                 children: widgets,
               ).show(),
-              child: Text('Open Gallery With Widgets'),
+              child: const Text('Open Gallery With Widgets'),
             ),
             ElevatedButton(
               onPressed: () => SwipeImageGallery(
                 context: context,
                 children: assets,
               ).show(),
-              child: Text('Open Gallery With Assets'),
+              child: const Text('Open Gallery With Assets'),
             ),
             ElevatedButton(
               onPressed: () => SwipeImageGallery(
@@ -140,7 +144,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                 children: assets,
                 controller: galleryController,
               ).show(),
-              child: Text('Open Gallery With Controller'),
+              child: const Text('Open Gallery With Controller'),
             ),
             ElevatedButton(
               onPressed: () => SwipeImageGallery(
@@ -151,9 +155,9 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                 itemCount: urls.length,
                 onSwipe: (index) => print(index),
               ).show(),
-              child: Text('Open Gallery With Builder'),
+              child: const Text('Open Gallery With Builder'),
             ),
-            Text('Hero Animation Example'),
+            const Text('Hero Animation Example'),
             Row(
               children: [
                 Expanded(
@@ -163,7 +167,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                       children: [assets[0], assets[1]],
                       heroProperties: heroProperties,
                     ).show(),
-                    child: Hero(
+                    child: const Hero(
                       tag: 'imageId1',
                       child: Image(
                         image: AssetImage('assets/1.jpeg'),
@@ -179,7 +183,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                       initialIndex: 1,
                       heroProperties: heroProperties,
                     ).show(),
-                    child: Hero(
+                    child: const Hero(
                       tag: 'imageId2',
                       child: Image(
                         image: AssetImage('assets/2.jpeg'),
