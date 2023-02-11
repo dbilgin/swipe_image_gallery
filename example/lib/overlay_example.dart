@@ -16,10 +16,10 @@ class OverlayExample extends StatelessWidget {
         children: [
           Container(
             color: Colors.black.withAlpha(50),
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 decoration: TextDecoration.none,
                 fontSize: 18.0,
