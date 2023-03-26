@@ -80,6 +80,7 @@ class SwipeImageGallery {
     this.transitionDuration = 400,
     this.hideOverlayOnTap = true,
     this.zoom = 8.0,
+    this.backgroundOpacity = 1.0,
     this.controller,
     this.onSwipe,
     this.overlayController,
@@ -135,6 +136,9 @@ class SwipeImageGallery {
 
   /// Amount of zoom allowed.
   final double zoom;
+
+  /// Background opacity between 0-1 and defaults to 1.
+  final double backgroundOpacity;
 
   /// The controller for the image gallery, extends [PageController].
   final ImageGalleryController? controller;
@@ -273,13 +277,13 @@ class SwipeImageGallery {
     if (hideStatusBar)
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     var showOverlay = true;
-    double _opacity = 1.0;
+    double _opacity = backgroundOpacity;
 
     final content = StatefulBuilder(
       builder: (context, setState) {
         void _setOpacity(double opacity) {
           setState(() {
-            _opacity = opacity;
+            _opacity = opacity * backgroundOpacity;
           });
         }
 

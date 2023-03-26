@@ -1,3 +1,7 @@
+## [0.8.2](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.2)
+
+- Added `backgroundOpacity` property.
+
 ## [0.8.1](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.1)
 
 - Removed touchpad support to fix windows crash.

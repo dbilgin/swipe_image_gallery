@@ -112,6 +112,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                   initialOverlay: OverlayExample(
                     title: '1/${remoteImages.length}',
                   ),
+                  backgroundOpacity: 0.5,
                 ).show();
               },
               child: const Text('Open Gallery With Overlay'),
