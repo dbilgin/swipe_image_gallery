@@ -1,3 +1,7 @@
+## [0.8.3](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.3)
+
+- The `show()` method now returns `Future`.
+
 ## [0.8.2](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.2)
 
 - Added `backgroundOpacity` property.

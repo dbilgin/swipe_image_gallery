@@ -273,7 +273,7 @@ class SwipeImageGallery {
   final List<ImageGalleryHeroProperties>? heroProperties;
 
   /// Shows the image gallery after initialisation.
-  void show() async {
+  Future<void> show() async {
     if (hideStatusBar)
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     var showOverlay = true;

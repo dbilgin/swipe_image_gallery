@@ -99,8 +99,8 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
         child: ListView(
           children: [
             ElevatedButton(
-              onPressed: () {
-                SwipeImageGallery(
+              onPressed: () async {
+                await SwipeImageGallery(
                   context: context,
                   children: remoteImages,
                   onSwipe: (index) {
@@ -114,6 +114,8 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                   ),
                   backgroundOpacity: 0.5,
                 ).show();
+
+                print('DOOONE');
               },
               child: const Text('Open Gallery With Overlay'),
             ),
