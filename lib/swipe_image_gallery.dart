@@ -13,7 +13,7 @@ import 'widget/gallery_overlay.dart';
 export 'util/image_gallery_hero_properties.dart';
 export 'util/image_gallery_controller.dart';
 
-class SwipeImageGallery {
+class SwipeImageGallery<T> {
   /// A scrollable, dismissable by swiping, zoomable, rotatable image gallery
   /// on which you can add a dynamic overlay.
   ///
@@ -273,7 +273,7 @@ class SwipeImageGallery {
   final List<ImageGalleryHeroProperties>? heroProperties;
 
   /// Shows the image gallery after initialisation.
-  Future<void> show() async {
+  Future<T?> show() async {
     if (hideStatusBar)
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     var showOverlay = true;
@@ -325,8 +325,11 @@ class SwipeImageGallery {
       },
     );
 
+    /// result of navigator
+    T? result;
+
     if (heroProperties != null) {
-      await Navigator.of(context).push(
+      result = await Navigator.of(context).push<T>(
         PageRouteBuilder(
           opaque: false,
           barrierDismissible: true,
@@ -336,7 +339,7 @@ class SwipeImageGallery {
         ),
       );
     } else {
-      await showGeneralDialog(
+      result = await showGeneralDialog<T>(
         context: context,
         barrierColor: Colors.transparent,
         barrierDismissible: false,
@@ -348,5 +351,7 @@ class SwipeImageGallery {
     if (hideStatusBar)
       await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
           overlays: SystemUiOverlay.values);
+
+    return result;
   }
 }
