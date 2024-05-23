@@ -9,7 +9,7 @@ void main() {
 }
 
 class ImageGalleryExampleApp extends StatelessWidget {
-  const ImageGalleryExampleApp({Key? key}) : super(key: key);
+  const ImageGalleryExampleApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,19 +25,19 @@ class ImageGalleryExampleApp extends StatelessWidget {
 }
 
 final urls = [
-  'https://via.placeholder.com/400',
-  'https://via.placeholder.com/800',
-  'https://via.placeholder.com/900x350',
-  'https://via.placeholder.com/1000',
-  'https://via.placeholder.com/100',
+  'https://picsum.photos/400?image=9',
+  'https://picsum.photos/800?image=1',
+  'https://picsum.photos/900/350?image=2',
+  'https://picsum.photos/1000?image=7',
+  'https://picsum.photos/100?image=4',
 ];
 
 final remoteImages = [
-  Image.network('https://via.placeholder.com/400'),
-  Image.network('https://via.placeholder.com/800'),
-  Image.network('https://via.placeholder.com/900x350'),
-  Image.network('https://via.placeholder.com/1000'),
-  Image.network('https://via.placeholder.com/100'),
+  Image.network('https://picsum.photos/400?image=9'),
+  Image.network('https://picsum.photos/800?image=1'),
+  Image.network('https://picsum.photos/900/350?image=2'),
+  Image.network('https://picsum.photos/1000?image=7'),
+  Image.network('https://picsum.photos/100?image=4'),
 ];
 
 const assets = [
@@ -63,8 +63,7 @@ final widgets = [
 ];
 
 class ImageGalleryExamplesPage extends StatefulWidget {
-  const ImageGalleryExamplesPage({Key? key, required this.title})
-      : super(key: key);
+  const ImageGalleryExamplesPage({super.key, required this.title});
   final String title;
 
   @override
@@ -115,7 +114,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
                   backgroundOpacity: 0.5,
                 ).show();
 
-                print('DOOONE');
+                debugPrint('DONE');
               },
               child: const Text('Open Gallery With Overlay'),
             ),

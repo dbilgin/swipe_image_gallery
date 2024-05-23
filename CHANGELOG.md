@@ -1,3 +1,7 @@
+## [0.8.4](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.4)
+
+- Added the ability to return data when closing thanks to @golfling.
+
 ## [0.8.3](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.3)
 
 - The `show()` method now returns `Future`.
