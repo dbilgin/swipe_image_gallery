@@ -23,19 +23,22 @@ class GalleryOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: showOverlay ? opacity : 0.0,
-      duration: const Duration(milliseconds: 200),
-      child: StreamBuilder(
-        initialData: initialData,
-        stream: overlayController.stream,
-        builder: (context, AsyncSnapshot<Widget?> snapshot) {
-          if (snapshot.hasData && snapshot.data != null) {
-            return snapshot.data!;
-          } else {
-            return Container();
-          }
-        },
+    return IgnorePointer(
+      ignoring: !showOverlay,
+      child: AnimatedOpacity(
+        opacity: showOverlay ? opacity : 0.0,
+        duration: const Duration(milliseconds: 200),
+        child: StreamBuilder<Widget?>(
+          initialData: initialData,
+          stream: overlayController.stream,
+          builder: (context, snapshot) {
+            if (snapshot.hasData && snapshot.data != null) {
+              return snapshot.data!;
+            } else {
+              return Container();
+            }
+          },
+        ),
       ),
     );
   }
