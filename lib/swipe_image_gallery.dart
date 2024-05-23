@@ -325,11 +325,10 @@ class SwipeImageGallery<T> {
       },
     );
 
-    /// result of navigator
-    T? result;
+    T? navigatorResult;
 
     if (heroProperties != null) {
-      result = await Navigator.of(context).push<T>(
+      navigatorResult = await Navigator.of(context).push<T>(
         PageRouteBuilder(
           opaque: false,
           barrierDismissible: true,
@@ -339,7 +338,7 @@ class SwipeImageGallery<T> {
         ),
       );
     } else {
-      result = await showGeneralDialog<T>(
+      navigatorResult = await showGeneralDialog<T>(
         context: context,
         barrierColor: Colors.transparent,
         barrierDismissible: false,
@@ -352,6 +351,6 @@ class SwipeImageGallery<T> {
       await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
           overlays: SystemUiOverlay.values);
 
-    return result;
+    return navigatorResult;
   }
 }
