@@ -1,6 +1,7 @@
-## [0.8.4](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.4)
+## [0.8.5](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.5)
 
 - Added the ability to return data when closing thanks to @golfling.
+- Overlay no longer interactable when it's hidden thanks to @golfling.
 
 ## [0.8.3](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.3)
 
