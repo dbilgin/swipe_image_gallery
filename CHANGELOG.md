@@ -1,3 +1,7 @@
+## [0.8.7](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.7)
+
+- Fixed static analysis.
+
 ## [0.8.6](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.6)
 
 - Added option to use root navigator thanks to @minhdanh.
