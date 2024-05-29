@@ -1,0 +1,29 @@
+name: Analyze
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Flutter SDK
+        uses: flutter-actions/setup-flutter@v3
+        with:
+          channel: stable
+          version: 3.19.5
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Run Flutter Linter
+        run: flutter analyze

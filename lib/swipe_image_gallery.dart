@@ -282,13 +282,13 @@ class SwipeImageGallery<T> {
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     }
     var showOverlay = true;
-    double _opacity = backgroundOpacity;
+    double opacity = backgroundOpacity;
 
     final content = StatefulBuilder(
       builder: (context, setState) {
-        void _setOpacity(double opacity) {
+        void setOpacity(double opacity) {
           setState(() {
-            _opacity = opacity * backgroundOpacity;
+            opacity = opacity * backgroundOpacity;
           });
         }
 
@@ -303,7 +303,6 @@ class SwipeImageGallery<T> {
                   }
                 },
                 child: Gallery(
-                  children: children,
                   itemBuilder: itemBuilder,
                   itemCount: itemCount,
                   initialIndex: initialIndex,
@@ -313,15 +312,16 @@ class SwipeImageGallery<T> {
                   controller: controller,
                   onSwipe: onSwipe,
                   heroProperties: heroProperties,
-                  opacity: _opacity,
-                  setBackgroundOpacity: _setOpacity,
+                  opacity: opacity,
+                  setBackgroundOpacity: setOpacity,
+                  children: children,
                 ),
               ),
               if (overlayController != null)
                 GalleryOverlay(
                   overlayController: overlayController!,
                   showOverlay: showOverlay,
-                  opacity: _opacity,
+                  opacity: opacity,
                   initialData: initialOverlay,
                 ),
             ],
