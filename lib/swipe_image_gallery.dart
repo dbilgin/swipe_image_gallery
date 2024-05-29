@@ -82,6 +82,7 @@ class SwipeImageGallery<T> {
     this.zoom = 8.0,
     this.backgroundOpacity = 1.0,
     this.controller,
+    this.useRootNavigator = true,
     this.onSwipe,
     this.overlayController,
     this.initialOverlay,
@@ -142,6 +143,9 @@ class SwipeImageGallery<T> {
 
   /// The controller for the image gallery, extends [PageController].
   final ImageGalleryController? controller;
+
+  /// Whether to show use the root navigator or not.
+  final bool useRootNavigator;
 
   /// Called whenever the current image index changes.
   final void Function(int)? onSwipe;
@@ -339,6 +343,7 @@ class SwipeImageGallery<T> {
       );
     } else {
       navigatorResult = await showGeneralDialog<T>(
+        useRootNavigator: useRootNavigator,
         context: context,
         barrierColor: Colors.transparent,
         barrierDismissible: false,
