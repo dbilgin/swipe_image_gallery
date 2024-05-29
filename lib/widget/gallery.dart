@@ -10,6 +10,7 @@ import '../util/image_gallery_hero_properties.dart';
 /// swiping through images using [PageView].
 class Gallery extends StatefulWidget {
   const Gallery({
+    Key? key,
     required this.initialIndex,
     required this.dismissDragDistance,
     required this.backgroundColor,
@@ -36,7 +37,8 @@ class Gallery extends StatefulWidget {
           (heroProperties != null &&
                   heroProperties.length == (children?.length ?? itemCount)) ||
               heroProperties == null,
-        );
+        ),
+        super(key: key);
 
   final int initialIndex;
   final int dismissDragDistance;
@@ -52,7 +54,7 @@ class Gallery extends StatefulWidget {
   final List<ImageGalleryHeroProperties>? heroProperties;
 
   @override
-  _GalleryState createState() => _GalleryState();
+  State<Gallery> createState() => _GalleryState();
 }
 
 class _GalleryState extends State<Gallery> {
@@ -79,19 +81,19 @@ class _GalleryState extends State<Gallery> {
             onPageChanged: widget.onSwipe,
             itemBuilder: (context, index) {
               return InteractivePage(
-                child: widget.children?[index] ??
-                    widget.itemBuilder!(context, index),
                 setScrollEnabled: (bool enabled) =>
                     setState(() => _scrollEnabled = enabled),
                 setBackgroundOpacity: widget.setBackgroundOpacity,
                 dismissDragDistance: widget.dismissDragDistance,
-                heroProperties: widget.heroProperties?[index] ?? null,
+                heroProperties: widget.heroProperties?[index],
+                child: widget.children?[index] ??
+                    widget.itemBuilder!(context, index),
               );
             },
             itemCount: widget.children?.length ?? widget.itemCount,
             physics: _scrollEnabled
-                ? BouncingScrollPhysics()
-                : NeverScrollableScrollPhysics(),
+                ? const BouncingScrollPhysics()
+                : const NeverScrollableScrollPhysics(),
             scrollBehavior: CustomScrollBehavior(),
           ),
         ),

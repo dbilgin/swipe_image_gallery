@@ -18,12 +18,12 @@ class CustomKeyboardListener extends StatelessWidget {
   void _handleKeyEvent(KeyEvent event) {
     if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
       controller.nextPage(
-        duration: Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 400),
         curve: Curves.linear,
       );
     } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
       controller.previousPage(
-        duration: Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 400),
         curve: Curves.linear,
       );
     }

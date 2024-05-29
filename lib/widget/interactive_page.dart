@@ -7,12 +7,13 @@ import '../util/image_gallery_hero_properties.dart';
 /// It also supports double tap for zooming in and out.
 class InteractivePage extends StatefulWidget {
   const InteractivePage({
+    Key? key,
     required this.child,
     required this.setScrollEnabled,
     required this.dismissDragDistance,
     required this.setBackgroundOpacity,
     this.heroProperties,
-  });
+  }) : super(key: key);
 
   final Widget child;
   final void Function(bool) setScrollEnabled;
@@ -21,7 +22,7 @@ class InteractivePage extends StatefulWidget {
   final ImageGalleryHeroProperties? heroProperties;
 
   @override
-  _InteractivePageState createState() => _InteractivePageState();
+  State<InteractivePage> createState() => _InteractivePageState();
 }
 
 class _InteractivePageState extends State<InteractivePage>
@@ -32,7 +33,7 @@ class _InteractivePageState extends State<InteractivePage>
   late AnimationController _zoomOutAnimationController;
 
   bool _zoomed = false;
-  Offset _dragPosition = Offset(0.0, 0.0);
+  Offset _dragPosition = const Offset(0.0, 0.0);
 
   void transformListener() {
     final scale = _transformationController.value.row0.r;
@@ -76,18 +77,18 @@ class _InteractivePageState extends State<InteractivePage>
   }
 
   void animateDragPosition(double offsetY) {
-    final _offsetTween = Tween<double>(begin: offsetY, end: 0)
+    final offsetTween = Tween<double>(begin: offsetY, end: 0)
         .animate(_translateToCenterController);
     void animationListener() {
       setState(() {
-        _dragPosition = Offset(0, _offsetTween.value);
+        _dragPosition = Offset(0, offsetTween.value);
       });
       if (_translateToCenterController.isCompleted) {
-        _offsetTween.removeListener(animationListener);
+        offsetTween.removeListener(animationListener);
       }
     }
 
-    _offsetTween.addListener(animationListener);
+    offsetTween.addListener(animationListener);
     _translateToCenterController.forward();
   }
 
@@ -95,20 +96,20 @@ class _InteractivePageState extends State<InteractivePage>
     required Matrix4 end,
     required AnimationController animationController,
   }) {
-    final _mapAnimation = Matrix4Tween(
+    final mapAnimation = Matrix4Tween(
       begin: _transformationController.value,
       end: end,
     ).animate(animationController);
 
     void animationListener() {
-      _transformationController.value = _mapAnimation.value;
+      _transformationController.value = mapAnimation.value;
 
       if (_transformationController.value == end) {
-        _mapAnimation.removeListener(animationListener);
+        mapAnimation.removeListener(animationListener);
       }
     }
 
-    _mapAnimation.addListener(animationListener);
+    mapAnimation.addListener(animationListener);
 
     animationController.forward();
   }
@@ -124,7 +125,7 @@ class _InteractivePageState extends State<InteractivePage>
     } else {
       final x = -details.localPosition.dx;
       final y = -details.localPosition.dy;
-      final scaleMultiplier = 2.0;
+      const scaleMultiplier = 2.0;
 
       final zoomedMatrix = Matrix4(
         scaleMultiplier, 0.0, 0.0, 0, //

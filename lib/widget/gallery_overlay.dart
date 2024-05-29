@@ -11,11 +11,12 @@ import 'package:flutter/material.dart';
 /// [StreamBuilder.initialData] works.
 class GalleryOverlay extends StatelessWidget {
   const GalleryOverlay({
+    Key? key,
     required this.overlayController,
     required this.showOverlay,
     required this.opacity,
     this.initialData,
-  });
+  }) : super(key: key);
   final StreamController<Widget> overlayController;
   final bool showOverlay;
   final double opacity;
