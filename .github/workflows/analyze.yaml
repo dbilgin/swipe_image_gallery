@@ -1,6 +1,9 @@
 name: Analyze
 
 on:
+  push:
+    branches:
+      - master
   pull_request:
     branches:
       - master
@@ -10,16 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Dart
-        uses: dart-lang/setup-dart@v1
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          sdk: stable
+          flutter-version: 'stable'
 
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
 
-      - name: Run dart analyze
-        run: dart analyze
+      - name: Run Flutter Linter
+        run: flutter analyze
