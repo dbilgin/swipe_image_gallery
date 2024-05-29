@@ -278,8 +278,9 @@ class SwipeImageGallery<T> {
 
   /// Shows the image gallery after initialisation.
   Future<T?> show() async {
-    if (hideStatusBar)
+    if (hideStatusBar) {
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    }
     var showOverlay = true;
     double _opacity = backgroundOpacity;
 
@@ -352,9 +353,12 @@ class SwipeImageGallery<T> {
       );
     }
 
-    if (hideStatusBar)
-      await SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-          overlays: SystemUiOverlay.values);
+    if (hideStatusBar) {
+      await SystemChrome.setEnabledSystemUIMode(
+        SystemUiMode.manual,
+        overlays: SystemUiOverlay.values,
+      );
+    }
 
     return navigatorResult;
   }
