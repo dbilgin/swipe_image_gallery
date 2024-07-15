@@ -81,6 +81,7 @@ class SwipeImageGallery<T> {
     this.hideOverlayOnTap = true,
     this.zoom = 8.0,
     this.backgroundOpacity = 1.0,
+    this.overlayBackgroundOpacity,
     this.controller,
     this.useRootNavigator = true,
     this.onSwipe,
@@ -140,6 +141,9 @@ class SwipeImageGallery<T> {
 
   /// Background opacity between 0-1 and defaults to 1.
   final double backgroundOpacity;
+
+  /// Overlay background opacity between 0-1 and defaults to [backgroundOpacity].
+  final double? overlayBackgroundOpacity;
 
   /// The controller for the image gallery, extends [PageController].
   final ImageGalleryController? controller;
@@ -283,12 +287,15 @@ class SwipeImageGallery<T> {
     }
     var showOverlay = true;
     double opacity = backgroundOpacity;
+    double overlayOpacity = overlayBackgroundOpacity ?? backgroundOpacity;
 
     final content = StatefulBuilder(
       builder: (context, setState) {
         void setOpacity(double newOpacity) {
           setState(() {
             opacity = newOpacity * backgroundOpacity;
+            overlayOpacity =
+                newOpacity * (overlayBackgroundOpacity ?? backgroundOpacity);
           });
         }
 
@@ -321,7 +328,7 @@ class SwipeImageGallery<T> {
                 GalleryOverlay(
                   overlayController: overlayController!,
                   showOverlay: showOverlay,
-                  opacity: opacity,
+                  opacity: overlayOpacity,
                   initialData: initialOverlay,
                 ),
             ],
