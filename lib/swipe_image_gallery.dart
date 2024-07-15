@@ -286,9 +286,9 @@ class SwipeImageGallery<T> {
 
     final content = StatefulBuilder(
       builder: (context, setState) {
-        void setOpacity(double opacity) {
+        void setOpacity(double newOpacity) {
           setState(() {
-            opacity = opacity * backgroundOpacity;
+            opacity = newOpacity * backgroundOpacity;
           });
         }
 
