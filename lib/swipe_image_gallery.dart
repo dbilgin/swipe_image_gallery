@@ -88,6 +88,7 @@ class SwipeImageGallery<T> {
     this.overlayController,
     this.initialOverlay,
     this.heroProperties,
+    this.showCloseIcon = false,
   });
 
   /// [BuildContext] required for triggering the dialogs for the gallery.
@@ -280,6 +281,9 @@ class SwipeImageGallery<T> {
   /// ```
   final List<ImageGalleryHeroProperties>? heroProperties;
 
+  /// [bool] to show or hide the close button.
+  final bool showCloseIcon;
+
   /// Shows the image gallery after initialisation.
   Future<T?> show() async {
     if (hideStatusBar) {
@@ -330,6 +334,14 @@ class SwipeImageGallery<T> {
                   showOverlay: showOverlay,
                   opacity: overlayOpacity,
                   initialData: initialOverlay,
+                ),
+              if (showCloseIcon)
+                IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(
+                    Icons.close,
+                    color: Colors.white,
+                  ),
                 ),
             ],
           ),
