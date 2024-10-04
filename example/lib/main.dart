@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:example/hero_animation_example_screen.dart';
 import 'package:example/overlay_example.dart';
 import 'package:flutter/material.dart';
 import 'package:swipe_image_gallery/swipe_image_gallery.dart';
@@ -72,10 +73,6 @@ class ImageGalleryExamplesPage extends StatefulWidget {
 }
 
 class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
-  final heroProperties = [
-    const ImageGalleryHeroProperties(tag: 'imageId1'),
-    const ImageGalleryHeroProperties(tag: 'imageId2'),
-  ];
   ImageGalleryController galleryController =
       ImageGalleryController(initialPage: 2);
   StreamController<Widget> overlayController =
@@ -161,40 +158,31 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
               child: const Text('Open Gallery With Builder'),
             ),
             const Text('Hero Animation Example'),
-            Row(
-              children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () => SwipeImageGallery(
-                      context: context,
-                      children: [assets[0], assets[1]],
-                      heroProperties: heroProperties,
-                    ).show(),
-                    child: const Hero(
-                      tag: 'imageId1',
-                      child: Image(
-                        image: AssetImage('assets/1.jpeg'),
-                      ),
-                    ),
+            Expanded(
+              child: InkWell(
+                onTap: () => SwipeImageGallery(
+                  context: context,
+                  children: [assets[0]],
+                  heroProperties: [
+                    const ImageGalleryHeroProperties(tag: 'imageId1')
+                  ],
+                ).show(),
+                child: const Hero(
+                  tag: 'imageId1',
+                  child: Image(
+                    image: AssetImage('assets/1.jpeg'),
                   ),
                 ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () => SwipeImageGallery(
-                      context: context,
-                      children: [assets[0], assets[1]],
-                      initialIndex: 1,
-                      heroProperties: heroProperties,
-                    ).show(),
-                    child: const Hero(
-                      tag: 'imageId2',
-                      child: Image(
-                        image: AssetImage('assets/2.jpeg'),
-                      ),
-                    ),
-                  ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HeroAnimationExampleScreen(),
                 ),
-              ],
+              ),
+              child: const Text('Multiple Images Hero Animation Example'),
             ),
           ],
         ),
