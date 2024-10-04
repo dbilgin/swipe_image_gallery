@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:example/hero_animation_example_screen.dart';
+import 'package:example/multi_hero_animation_screen.dart';
 import 'package:example/overlay_example.dart';
 import 'package:flutter/material.dart';
 import 'package:swipe_image_gallery/swipe_image_gallery.dart';
@@ -179,7 +179,7 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const HeroAnimationExampleScreen(),
+                  builder: (context) => const MultiHeroAnimationScreen(),
                 ),
               ),
               child: const Text('Multiple Images Hero Animation Example'),

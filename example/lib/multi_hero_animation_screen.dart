@@ -6,16 +6,15 @@ const assets = [
   Image(image: AssetImage('assets/2.jpeg')),
 ];
 
-class HeroAnimationExampleScreen extends StatefulWidget {
-  const HeroAnimationExampleScreen({super.key});
+class MultiHeroAnimationScreen extends StatefulWidget {
+  const MultiHeroAnimationScreen({super.key});
 
   @override
-  State<HeroAnimationExampleScreen> createState() =>
-      _HeroAnimationExampleScreenState();
+  State<MultiHeroAnimationScreen> createState() =>
+      _MultiHeroAnimationScreenState();
 }
 
-class _HeroAnimationExampleScreenState
-    extends State<HeroAnimationExampleScreen> {
+class _MultiHeroAnimationScreenState extends State<MultiHeroAnimationScreen> {
   int? currentIndex;
   final heroProperties = [
     const ImageGalleryHeroProperties(tag: 'imageId1'),
