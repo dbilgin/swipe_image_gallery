@@ -152,7 +152,7 @@ class SwipeImageGallery<T> {
   final bool useRootNavigator;
 
   /// Called whenever the current image index changes.
-  final void Function(int)? onSwipe;
+  final void Function(int index)? onSwipe;
 
   /// The `overlayController` is used for adding and managing the overlay
   /// widget changes. It uses a [StreamController] so that the changes made
