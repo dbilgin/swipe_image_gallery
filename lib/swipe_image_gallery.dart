@@ -224,54 +224,29 @@ class SwipeImageGallery<T> {
   /// }
 
   /// class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
-  ///   final heroProperties = [
-  ///     ImageGalleryHeroProperties(tag: 'imageId1'),
-  ///     ImageGalleryHeroProperties(tag: 'imageId2'),
-  ///   ];
-
   ///   @override
   ///   Widget build(BuildContext context) {
   ///     return Scaffold(
   ///       body: Container(
-  ///         padding: EdgeInsets.all(16.0),
+  ///         padding: const EdgeInsets.all(16.0),
   ///         child: ListView(
   ///           children: [
-  ///             Text('Hero Animation Example'),
-  ///             Row(
-  ///               children: [
-  ///                 Expanded(
-  ///                   child: InkWell(
-  ///                     onTap: () => SwipeImageGallery(
-  ///                       context: context,
-  ///                       children: [assets[0], assets[1]],
-  ///                       heroProperties: heroProperties,
-  ///                     ).show(),
-  ///                     child: Hero(
-  ///                       tag: 'imageId1',
-  ///                       child: Image(
-  ///                         image: AssetImage('assets/1.jpeg'),
-  ///                       ),
-  ///                     ),
-  ///                   ),
-  ///                 ),
-  ///                 Expanded(
-  ///                   child: InkWell(
-  ///                     onTap: () => SwipeImageGallery(
-  ///                       context: context,
-  ///                       children: [assets[0], assets[1]],
-  ///                       initialIndex: 1,
-  ///                       heroProperties: heroProperties,
-  ///                     ).show(),
-  ///                     child: Hero(
-  ///                       tag: 'imageId2',
-  ///                       child: Image(
-  ///                         image: AssetImage('assets/2.jpeg'),
-  ///                       ),
-  ///                     ),
-  ///                   ),
-  ///                 ),
-  ///               ],
-  ///             ),
+  ///             const Text('Hero Animation Example'),
+  ///             InkWell(
+  ///              onTap: () => SwipeImageGallery(
+  ///                context: context,
+  ///                children: [assets[0]],
+  ///                heroProperties: [
+  ///                  const ImageGalleryHeroProperties(tag: 'imageId1')
+  ///                ],
+  ///              ).show(),
+  ///              child: const Hero(
+  ///                tag: 'imageId1',
+  ///                child: Image(
+  ///                  image: AssetImage('assets/1.jpeg'),
+  ///                ),
+  ///              ),
+  ///            ),
   ///           ],
   ///         ),
   ///       ),
