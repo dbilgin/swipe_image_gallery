@@ -16,6 +16,7 @@ class Gallery extends StatefulWidget {
     required this.backgroundColor,
     required this.opacity,
     required this.setBackgroundOpacity,
+    this.reverseDirection,
     this.itemCount,
     this.itemBuilder,
     this.children,
@@ -45,6 +46,7 @@ class Gallery extends StatefulWidget {
   final Color backgroundColor;
   final double opacity;
   final void Function(double) setBackgroundOpacity;
+  final bool? reverseDirection;
   final IndexedWidgetBuilder? itemBuilder;
   final int? itemCount;
   final List<Widget>? children;
@@ -78,6 +80,7 @@ class _GalleryState extends State<Gallery> {
           controller: controller,
           child: PageView.builder(
             controller: controller,
+            reverse: widget.reverseDirection ?? false,
             onPageChanged: widget.onSwipe,
             itemBuilder: (context, index) {
               return InteractivePage(

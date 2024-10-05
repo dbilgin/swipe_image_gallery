@@ -88,6 +88,7 @@ class SwipeImageGallery<T> {
     this.overlayController,
     this.initialOverlay,
     this.heroProperties,
+    this.reverseDirection,
   });
 
   /// [BuildContext] required for triggering the dialogs for the gallery.
@@ -280,6 +281,16 @@ class SwipeImageGallery<T> {
   /// ```
   final List<ImageGalleryHeroProperties>? heroProperties;
 
+  /// Direction the library should take when swiping.
+  /// ```
+  /// await SwipeImageGallery(
+  ///   context: context,
+  ///   children: images,
+  ///   reverseDirection: true,
+  /// ).show();
+  /// ```
+  final bool? reverseDirection;
+
   /// Shows the image gallery after initialisation.
   Future<T?> show() async {
     if (hideStatusBar) {
@@ -320,6 +331,7 @@ class SwipeImageGallery<T> {
                   onSwipe: onSwipe,
                   heroProperties: heroProperties,
                   opacity: opacity,
+                  reverseDirection: reverseDirection,
                   setBackgroundOpacity: setOpacity,
                   children: children,
                 ),

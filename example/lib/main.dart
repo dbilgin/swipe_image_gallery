@@ -19,8 +19,9 @@ class ImageGalleryExampleApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:
-          const ImageGalleryExamplesPage(title: 'Image Gallery Demo Home Page'),
+      home: const ImageGalleryExamplesPage(
+        title: 'Image Gallery Demo Home Page',
+      ),
     );
   }
 }
@@ -158,20 +159,18 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
               child: const Text('Open Gallery With Builder'),
             ),
             const Text('Hero Animation Example'),
-            Expanded(
-              child: InkWell(
-                onTap: () => SwipeImageGallery(
-                  context: context,
-                  children: [assets[0]],
-                  heroProperties: [
-                    const ImageGalleryHeroProperties(tag: 'imageId1')
-                  ],
-                ).show(),
-                child: const Hero(
-                  tag: 'imageId1',
-                  child: Image(
-                    image: AssetImage('assets/1.jpeg'),
-                  ),
+            InkWell(
+              onTap: () => SwipeImageGallery(
+                context: context,
+                children: [assets[0]],
+                heroProperties: [
+                  const ImageGalleryHeroProperties(tag: 'imageId1')
+                ],
+              ).show(),
+              child: const Hero(
+                tag: 'imageId1',
+                child: Image(
+                  image: AssetImage('assets/1.jpeg'),
                 ),
               ),
             ),
