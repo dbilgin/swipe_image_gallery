@@ -1,3 +1,7 @@
+## [0.8.9](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.9)
+
+- Added reverse support for swipe direction.
+
 ## [0.8.8](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.8)
 
 - Added opacity option for overlay.
