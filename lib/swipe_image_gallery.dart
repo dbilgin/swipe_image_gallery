@@ -77,6 +77,7 @@ class SwipeImageGallery<T> {
     this.initialIndex = 0,
     this.backgroundColor = Colors.black,
     this.dismissDragDistance = 160,
+    this.scrollDirection = Axis.horizontal,
     this.transitionDuration = 400,
     this.hideOverlayOnTap = true,
     this.zoom = 8.0,
@@ -89,6 +90,7 @@ class SwipeImageGallery<T> {
     this.initialOverlay,
     this.heroProperties,
     this.reverseDirection,
+    this.dragEnabled = true,
   });
 
   /// [BuildContext] required for triggering the dialogs for the gallery.
@@ -128,6 +130,9 @@ class SwipeImageGallery<T> {
 
   /// The drag distance needed before the gallery can be dismissed.
   final int dismissDragDistance;
+
+  /// Sets the scroll direction for the gallery.
+  final Axis scrollDirection;
 
   /// The transition duration for the animation of opening and closing
   /// the gallery.
@@ -266,6 +271,9 @@ class SwipeImageGallery<T> {
   /// ```
   final bool? reverseDirection;
 
+  /// Enables drag to dismiss functionality.
+  final bool dragEnabled;
+
   /// Shows the image gallery after initialisation.
   Future<T?> show() async {
     if (hideStatusBar) {
@@ -300,6 +308,7 @@ class SwipeImageGallery<T> {
                   itemCount: itemCount,
                   initialIndex: initialIndex,
                   dismissDragDistance: dismissDragDistance,
+                  scrollDirection: scrollDirection,
                   backgroundColor: backgroundColor,
                   transitionDuration: transitionDuration,
                   controller: controller,
@@ -308,6 +317,7 @@ class SwipeImageGallery<T> {
                   opacity: opacity,
                   reverseDirection: reverseDirection,
                   setBackgroundOpacity: setOpacity,
+                  dragEnabled: dragEnabled,
                   children: children,
                 ),
               ),

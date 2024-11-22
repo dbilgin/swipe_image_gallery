@@ -12,6 +12,8 @@ class InteractivePage extends StatefulWidget {
     required this.setScrollEnabled,
     required this.dismissDragDistance,
     required this.setBackgroundOpacity,
+    required this.scrollDirection,
+    required this.dragEnabled,
     this.heroProperties,
   }) : super(key: key);
 
@@ -19,6 +21,8 @@ class InteractivePage extends StatefulWidget {
   final void Function(bool) setScrollEnabled;
   final int dismissDragDistance;
   final void Function(double) setBackgroundOpacity;
+  final Axis scrollDirection;
+  final bool dragEnabled;
   final ImageGalleryHeroProperties? heroProperties;
 
   @override
@@ -81,7 +85,9 @@ class _InteractivePageState extends State<InteractivePage>
         .animate(_translateToCenterController);
     void animationListener() {
       setState(() {
-        _dragPosition = Offset(0, offsetTween.value);
+        _dragPosition = widget.scrollDirection == Axis.horizontal
+            ? Offset(0, offsetTween.value)
+            : Offset(offsetTween.value, 0);
       });
       if (_translateToCenterController.isCompleted) {
         offsetTween.removeListener(animationListener);
@@ -144,21 +150,31 @@ class _InteractivePageState extends State<InteractivePage>
   /// Required for `onDoubleTapDown` to work
   void onDoubleTap() {}
 
-  void onVerticalDragEndHandler(DragEndDetails details) {
-    double pixelsPerSecond = _dragPosition.dy.abs();
+  void onDragEndHandler(DragEndDetails details) {
+    final dragPositionDirection = widget.scrollDirection == Axis.horizontal
+        ? _dragPosition.dy
+        : _dragPosition.dx;
+    double pixelsPerSecond = dragPositionDirection.abs();
     if (pixelsPerSecond > (widget.dismissDragDistance)) {
       Navigator.pop(context);
     } else {
       widget.setBackgroundOpacity(1.0);
-      animateDragPosition(_dragPosition.dy);
+      animateDragPosition(dragPositionDirection);
     }
   }
 
-  void onVerticalDragUpdateHandler(DragUpdateDetails details) {
+  void onDragUpdateHandler(DragUpdateDetails details) {
     setState(
-        () => _dragPosition = Offset(0.0, _dragPosition.dy + details.delta.dy));
+      () => _dragPosition = widget.scrollDirection == Axis.horizontal
+          ? Offset(0.0, _dragPosition.dy + details.delta.dy)
+          : Offset(_dragPosition.dx + details.delta.dx, 0.0),
+    );
 
-    final ratio = 1 - (_dragPosition.dy.abs() / widget.dismissDragDistance);
+    final dragPositionDirection = widget.scrollDirection == Axis.horizontal
+        ? _dragPosition.dy
+        : _dragPosition.dx;
+    final ratio =
+        1 - (dragPositionDirection.abs() / widget.dismissDragDistance);
     widget.setBackgroundOpacity(ratio > 0 ? ratio : 0);
   }
 
@@ -175,14 +191,40 @@ class _InteractivePageState extends State<InteractivePage>
             bottom: -_dragPosition.dy,
             right: -_dragPosition.dx,
             child: GestureDetector(
-              onVerticalDragStart: _zoomed
+              onVerticalDragStart: _zoomed ||
+                      widget.scrollDirection == Axis.vertical ||
+                      !widget.dragEnabled
                   ? null
                   : (_) {
                       _translateToCenterController.reset();
                     },
-              onVerticalDragUpdate:
-                  !_zoomed ? onVerticalDragUpdateHandler : null,
-              onVerticalDragEnd: !_zoomed ? onVerticalDragEndHandler : null,
+              onVerticalDragUpdate: _zoomed ||
+                      widget.scrollDirection == Axis.vertical ||
+                      !widget.dragEnabled
+                  ? null
+                  : onDragUpdateHandler,
+              onVerticalDragEnd: _zoomed ||
+                      widget.scrollDirection == Axis.vertical ||
+                      !widget.dragEnabled
+                  ? null
+                  : onDragEndHandler,
+              onHorizontalDragStart: _zoomed ||
+                      widget.scrollDirection == Axis.horizontal ||
+                      !widget.dragEnabled
+                  ? null
+                  : (_) {
+                      _translateToCenterController.reset();
+                    },
+              onHorizontalDragUpdate: _zoomed ||
+                      widget.scrollDirection == Axis.horizontal ||
+                      !widget.dragEnabled
+                  ? null
+                  : onDragUpdateHandler,
+              onHorizontalDragEnd: _zoomed ||
+                      widget.scrollDirection == Axis.horizontal ||
+                      !widget.dragEnabled
+                  ? null
+                  : onDragEndHandler,
               onDoubleTapDown: doubleTapDownHandler,
               onDoubleTap: onDoubleTap,
               child: InteractiveViewer(

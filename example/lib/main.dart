@@ -158,6 +158,15 @@ class _ImageGalleryExamplesPageState extends State<ImageGalleryExamplesPage> {
               ).show(),
               child: const Text('Open Gallery With Builder'),
             ),
+            ElevatedButton(
+              onPressed: () => SwipeImageGallery(
+                context: context,
+                children: remoteImages,
+                initialIndex: 2,
+                scrollDirection: Axis.vertical,
+              ).show(),
+              child: const Text('Open Vertical Gallery'),
+            ),
             const Text('Hero Animation Example'),
             InkWell(
               onTap: () => SwipeImageGallery(
