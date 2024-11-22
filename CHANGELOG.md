@@ -1,3 +1,7 @@
+## [0.9.0](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.9.0)
+
+- Added vertical gallery support.
+
 ## [0.8.9](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.8.9)
 
 - Added reverse support for swipe direction.

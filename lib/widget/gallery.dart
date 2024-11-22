@@ -13,8 +13,10 @@ class Gallery extends StatefulWidget {
     Key? key,
     required this.initialIndex,
     required this.dismissDragDistance,
+    required this.scrollDirection,
     required this.backgroundColor,
     required this.opacity,
+    required this.dragEnabled,
     required this.setBackgroundOpacity,
     this.reverseDirection,
     this.itemCount,
@@ -43,8 +45,10 @@ class Gallery extends StatefulWidget {
 
   final int initialIndex;
   final int dismissDragDistance;
+  final Axis scrollDirection;
   final Color backgroundColor;
   final double opacity;
+  final bool dragEnabled;
   final void Function(double) setBackgroundOpacity;
   final bool? reverseDirection;
   final IndexedWidgetBuilder? itemBuilder;
@@ -79,6 +83,7 @@ class _GalleryState extends State<Gallery> {
         child: CustomKeyboardListener(
           controller: controller,
           child: PageView.builder(
+            scrollDirection: widget.scrollDirection,
             controller: controller,
             reverse: widget.reverseDirection ?? false,
             onPageChanged: widget.onSwipe,
@@ -89,6 +94,8 @@ class _GalleryState extends State<Gallery> {
                 setBackgroundOpacity: widget.setBackgroundOpacity,
                 dismissDragDistance: widget.dismissDragDistance,
                 heroProperties: widget.heroProperties?[index],
+                scrollDirection: widget.scrollDirection,
+                dragEnabled: widget.dragEnabled,
                 child: widget.children?[index] ??
                     widget.itemBuilder!(context, index),
               );
