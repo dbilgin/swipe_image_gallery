@@ -1,3 +1,7 @@
+## [0.9.1](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.9.1)
+
+- Changed to `withValues` to add opacity.
+
 ## [0.9.0](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.9.0)
 
 - Added vertical gallery support.

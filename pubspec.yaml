@@ -1,6 +1,6 @@
 name: swipe_image_gallery
 description: A scrollable, dismissable by swiping, zoomable gallery on which you can add a dynamic overlay.
-version: 0.9.0
+version: 0.9.1
 homepage: https://github.com/dbilgin/swipe_image_gallery
 
 environment:
