@@ -1,7 +1,9 @@
 name: Analyze
 
 on:
-  push
+  pull_request:
+    branches:
+      - master
 
 jobs:
   analyze:
