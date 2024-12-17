@@ -1,3 +1,7 @@
+## [0.9.2](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.9.2)
+
+- Revert 0.9.1
+
 ## [0.9.1](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.9.1)
 
 - Changed to `withValues` to add opacity.

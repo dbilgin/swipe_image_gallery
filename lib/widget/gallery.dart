@@ -78,7 +78,7 @@ class _GalleryState extends State<Gallery> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: widget.backgroundColor.withValues(alpha: widget.opacity),
+      color: widget.backgroundColor.withOpacity(widget.opacity),
       child: SafeArea(
         child: CustomKeyboardListener(
           controller: controller,
