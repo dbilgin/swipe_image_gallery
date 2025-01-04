@@ -26,6 +26,7 @@ class Gallery extends StatefulWidget {
     this.controller,
     this.onSwipe,
     this.heroProperties,
+    this.useSafeArea = true,
   })  : assert(
           (children != null &&
                   children.length > 0 &&
@@ -58,6 +59,7 @@ class Gallery extends StatefulWidget {
   final PageController? controller;
   final void Function(int)? onSwipe;
   final List<ImageGalleryHeroProperties>? heroProperties;
+  final bool useSafeArea;
 
   @override
   State<Gallery> createState() => _GalleryState();
@@ -79,7 +81,7 @@ class _GalleryState extends State<Gallery> {
   Widget build(BuildContext context) {
     return Container(
       color: widget.backgroundColor.withValues(alpha: widget.opacity),
-      child: SafeArea(
+      child: widget.useSafeArea ? SafeArea(
         child: CustomKeyboardListener(
           controller: controller,
           child: PageView.builder(
@@ -107,7 +109,33 @@ class _GalleryState extends State<Gallery> {
             scrollBehavior: CustomScrollBehavior(),
           ),
         ),
-      ),
+      ) : CustomKeyboardListener(
+          controller: controller,
+          child: PageView.builder(
+            scrollDirection: widget.scrollDirection,
+            controller: controller,
+            reverse: widget.reverseDirection ?? false,
+            onPageChanged: widget.onSwipe,
+            itemBuilder: (context, index) {
+              return InteractivePage(
+                setScrollEnabled: (bool enabled) =>
+                    setState(() => _scrollEnabled = enabled),
+                setBackgroundOpacity: widget.setBackgroundOpacity,
+                dismissDragDistance: widget.dismissDragDistance,
+                heroProperties: widget.heroProperties?[index],
+                scrollDirection: widget.scrollDirection,
+                dragEnabled: widget.dragEnabled,
+                child: widget.children?[index] ??
+                    widget.itemBuilder!(context, index),
+              );
+            },
+            itemCount: widget.children?.length ?? widget.itemCount,
+            physics: _scrollEnabled
+                ? const BouncingScrollPhysics()
+                : const NeverScrollableScrollPhysics(),
+            scrollBehavior: CustomScrollBehavior(),
+          ),
+        ),
     );
   }
 }

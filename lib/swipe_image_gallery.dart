@@ -91,6 +91,7 @@ class SwipeImageGallery<T> {
     this.heroProperties,
     this.reverseDirection,
     this.dragEnabled = true,
+    this.useSafeArea = true,
   });
 
   /// [BuildContext] required for triggering the dialogs for the gallery.
@@ -274,6 +275,9 @@ class SwipeImageGallery<T> {
   /// Enables drag to dismiss functionality.
   final bool dragEnabled;
 
+  /// use SafeArea widget as image container or not.
+  final bool useSafeArea;
+
   /// Shows the image gallery after initialisation.
   Future<T?> show() async {
     if (hideStatusBar) {
@@ -319,6 +323,7 @@ class SwipeImageGallery<T> {
                   setBackgroundOpacity: setOpacity,
                   dragEnabled: dragEnabled,
                   children: children,
+                  useSafeArea: useSafeArea,
                 ),
               ),
               if (overlayController != null)
