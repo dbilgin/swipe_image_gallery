@@ -51,6 +51,7 @@ class Gallery extends StatefulWidget {
   final double opacity;
   final bool dragEnabled;
   final void Function(double) setBackgroundOpacity;
+  final bool useSafeArea;
   final bool? reverseDirection;
   final IndexedWidgetBuilder? itemBuilder;
   final int? itemCount;
@@ -59,7 +60,6 @@ class Gallery extends StatefulWidget {
   final PageController? controller;
   final void Function(int)? onSwipe;
   final List<ImageGalleryHeroProperties>? heroProperties;
-  final bool useSafeArea;
 
   @override
   State<Gallery> createState() => _GalleryState();
@@ -95,8 +95,8 @@ class _GalleryState extends State<Gallery> {
             heroProperties: widget.heroProperties?[index],
             scrollDirection: widget.scrollDirection,
             dragEnabled: widget.dragEnabled,
-            child: widget.children?[index] ??
-                widget.itemBuilder!(context, index),
+            child:
+                widget.children?[index] ?? widget.itemBuilder!(context, index),
           );
         },
         itemCount: widget.children?.length ?? widget.itemCount,

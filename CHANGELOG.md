@@ -1,3 +1,7 @@
+## [0.10.1](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.10.1)
+
+- Added option to disable SafeArea.
+
 ## [0.10.0](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.10.0)
 
 - Changed to `withValues` to add opacity.
