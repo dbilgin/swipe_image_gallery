@@ -322,8 +322,8 @@ class SwipeImageGallery<T> {
                   reverseDirection: reverseDirection,
                   setBackgroundOpacity: setOpacity,
                   dragEnabled: dragEnabled,
-                  children: children,
                   useSafeArea: useSafeArea,
+                  children: children,
                 ),
               ),
               if (overlayController != null)
