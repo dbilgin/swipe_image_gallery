@@ -92,6 +92,8 @@ class SwipeImageGallery<T> {
     this.reverseDirection,
     this.dragEnabled = true,
     this.useSafeArea = true,
+    this.panEnabled = true,
+    this.zoomEnabled = true,
   });
 
   /// [BuildContext] required for triggering the dialogs for the gallery.
@@ -275,6 +277,12 @@ class SwipeImageGallery<T> {
   /// Enables drag to dismiss functionality.
   final bool dragEnabled;
 
+  /// Enables panning around a zoomed in image.
+  final bool panEnabled;
+
+  /// Enables zooming in and out.
+  final bool zoomEnabled;
+
   /// use SafeArea widget as image container or not.
   final bool useSafeArea;
 
@@ -322,6 +330,8 @@ class SwipeImageGallery<T> {
                   reverseDirection: reverseDirection,
                   setBackgroundOpacity: setOpacity,
                   dragEnabled: dragEnabled,
+                  panEnabled: panEnabled,
+                  zoomEnabled: zoomEnabled,
                   useSafeArea: useSafeArea,
                   children: children,
                 ),
