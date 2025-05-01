@@ -1,0 +1,1 @@
+/home/ulgen/Desktop/swipe_image_gallery/example/build/app/intermediates/cxx/Debug/4m6f1a34/obj/x86_64
