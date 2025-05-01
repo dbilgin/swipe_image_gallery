@@ -17,6 +17,8 @@ class Gallery extends StatefulWidget {
     required this.backgroundColor,
     required this.opacity,
     required this.dragEnabled,
+    required this.panEnabled,
+    required this.zoomEnabled,
     required this.setBackgroundOpacity,
     required this.useSafeArea,
     this.reverseDirection,
@@ -50,6 +52,8 @@ class Gallery extends StatefulWidget {
   final Color backgroundColor;
   final double opacity;
   final bool dragEnabled;
+  final bool panEnabled;
+  final bool zoomEnabled;
   final void Function(double) setBackgroundOpacity;
   final bool useSafeArea;
   final bool? reverseDirection;
@@ -95,6 +99,8 @@ class _GalleryState extends State<Gallery> {
             heroProperties: widget.heroProperties?[index],
             scrollDirection: widget.scrollDirection,
             dragEnabled: widget.dragEnabled,
+            panEnabled: widget.panEnabled,
+            zoomEnabled: widget.zoomEnabled,
             child:
                 widget.children?[index] ?? widget.itemBuilder!(context, index),
           );

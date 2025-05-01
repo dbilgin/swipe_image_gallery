@@ -14,6 +14,8 @@ class InteractivePage extends StatefulWidget {
     required this.setBackgroundOpacity,
     required this.scrollDirection,
     required this.dragEnabled,
+    required this.panEnabled,
+    required this.zoomEnabled,
     this.heroProperties,
   }) : super(key: key);
 
@@ -23,6 +25,8 @@ class InteractivePage extends StatefulWidget {
   final void Function(double) setBackgroundOpacity;
   final Axis scrollDirection;
   final bool dragEnabled;
+  final bool panEnabled;
+  final bool zoomEnabled;
   final ImageGalleryHeroProperties? heroProperties;
 
   @override
@@ -121,6 +125,10 @@ class _InteractivePageState extends State<InteractivePage>
   }
 
   void doubleTapDownHandler(TapDownDetails details) {
+    if (!widget.zoomEnabled) {
+      return;
+    }
+
     if (_zoomed) {
       final defaultMatrix = Matrix4.diagonal3Values(1, 1, 1);
 
@@ -230,6 +238,8 @@ class _InteractivePageState extends State<InteractivePage>
               child: InteractiveViewer(
                 maxScale: 8.0,
                 transformationController: _transformationController,
+                panEnabled: widget.panEnabled,
+                scaleEnabled: widget.zoomEnabled,
                 child: heroProps != null
                     ? Hero(
                         tag: heroProps.tag,
