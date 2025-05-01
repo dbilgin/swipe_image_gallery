@@ -1,3 +1,7 @@
+## [0.10.2](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.10.2)
+
+- Added option to disable zooming and panning.
+
 ## [0.10.1](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.10.1)
 
 - Added option to disable SafeArea.
