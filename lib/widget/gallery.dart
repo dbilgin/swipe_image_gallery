@@ -10,7 +10,7 @@ import '../util/image_gallery_hero_properties.dart';
 /// swiping through images using [PageView].
 class Gallery extends StatefulWidget {
   const Gallery({
-    Key? key,
+    super.key,
     required this.initialIndex,
     required this.dismissDragDistance,
     required this.scrollDirection,
@@ -43,8 +43,7 @@ class Gallery extends StatefulWidget {
           (heroProperties != null &&
                   heroProperties.length == (children?.length ?? itemCount)) ||
               heroProperties == null,
-        ),
-        super(key: key);
+        );
 
   final int initialIndex;
   final int dismissDragDistance;

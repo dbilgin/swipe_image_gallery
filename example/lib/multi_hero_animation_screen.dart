@@ -44,10 +44,10 @@ class _MultiHeroAnimationScreenState extends State<MultiHeroAnimationScreen> {
     ).show();
   }
 
-  Widget getPlaceholder(context, heroSize, child, index) =>
+  Widget getPlaceholder(BuildContext context, Size heroSize, Widget child, int index) =>
       currentIndex == index ? const SizedBox(height: 125, width: 250) : child;
 
-  Widget getFlightShuttleBuilder(animation, heroFlightDirection, index) {
+  Widget getFlightShuttleBuilder(Animation<double> animation, HeroFlightDirection heroFlightDirection, int index) {
     animation.addStatusListener((status) {
       if (status == AnimationStatus.dismissed &&
           heroFlightDirection == HeroFlightDirection.pop) {
