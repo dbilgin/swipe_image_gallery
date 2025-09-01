@@ -6,10 +6,10 @@ import 'package:flutter/widgets.dart';
 /// listened to for swiping.
 class CustomKeyboardListener extends StatelessWidget {
   CustomKeyboardListener({
-    Key? key,
+    super.key,
     required this.controller,
     required this.child,
-  }) : super(key: key);
+  });
   final PageController controller;
   final Widget child;
 

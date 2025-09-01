@@ -1,11 +1,11 @@
 name: swipe_image_gallery
 description: A scrollable, dismissable by swiping, zoomable gallery on which you can add a dynamic overlay.
-version: 0.10.2
+version: 0.11.0
 homepage: https://github.com/dbilgin/swipe_image_gallery
 
 environment:
-  sdk: '>=2.12.0 <4.0.0'
-  flutter: '>=1.17.0'
+  sdk: ">=2.17.0 <4.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
@@ -14,6 +14,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^6.0.0
 
 flutter:

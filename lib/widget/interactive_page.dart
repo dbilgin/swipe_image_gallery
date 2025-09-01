@@ -7,7 +7,7 @@ import '../util/image_gallery_hero_properties.dart';
 /// It also supports double tap for zooming in and out.
 class InteractivePage extends StatefulWidget {
   const InteractivePage({
-    Key? key,
+    super.key,
     required this.child,
     required this.setScrollEnabled,
     required this.dismissDragDistance,
@@ -17,7 +17,7 @@ class InteractivePage extends StatefulWidget {
     required this.panEnabled,
     required this.zoomEnabled,
     this.heroProperties,
-  }) : super(key: key);
+  });
 
   final Widget child;
   final void Function(bool) setScrollEnabled;
