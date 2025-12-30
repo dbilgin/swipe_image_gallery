@@ -2,7 +2,7 @@
 
 - Flutter version upgrade.
 - Flutter and SDK version restrictions added.
-- Sİmple linter fixes after upgrade.
+- Simple linter fixes after upgrade.
 
 ## [0.10.2](https://github.com/dbilgin/swipe_image_gallery/releases/tag/v0.10.2)
 
